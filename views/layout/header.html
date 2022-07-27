@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workspace</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/img/svg/logo.svg" type="image/x-icon">
+  <!-- Custom styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+  <script>
+    const theme = localStorage.getItem('darkMode') || null;
+    if(theme=='enabled') document.body.classList.add('darkmode')
+    else  document.body.classList.remove('darkmode')
+   </script>
+  <div class="layer"></div>
+<!-- ! Body -->
+<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
