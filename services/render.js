@@ -52,32 +52,7 @@ exports.add_project = (req, res) =>{
           description:description
         })
       }
-     
-
-exports.add_ticket = (req, res) =>{
-    console.log(req.user)
-    let title = ''
-    let description = ''
-    let type = ''
-    let createdBy = req.user.username
-    let priority = ''
-    let status = ''
-    let assignTo = ''
-    let id = req.params.id
-    User.find(function (err, users) {
-      res.render('projects/add_ticket', {
-        title:title,
-        description:description,
-        type:type,
-        createdBy:createdBy,
-        priority:priority,
-        status:status,
-        id: id,
-        users:users,
-        assignTo:assignTo
-      })
-    })
-}
+    
 exports.tickets = (req, res) =>{
   let title = ''
     let description = ''

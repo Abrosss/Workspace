@@ -69,13 +69,11 @@ const app = express()
 
             const projects = require('./routes/projects.js')
     const api = require('./routes/api.js')
-    const tickets = require('./routes/tickets.js')
     const users = require('./routes/users.js')
 
 
     app.use('/projects', projects)  //THIS IS MAIN
     app.use('/api', api)
-    app.use('/tickets', tickets)
     app.use('/users', users)
 
             let port = 3000

@@ -5,10 +5,7 @@ const bcrypt = require('bcryptjs')
 let Project = require('../models/project')
 let Ticket = require('../models/ticket')
 let User = require('../models/user')
-let Note = require('../models/notes')
-let Todo = require('../models/todolist')
 const {registerValidation, loginValidation} = require('../config/validation')
-const { route } = require('./projects')
 //PROJECTS
 router.get('/projects', (req, res) => {
 
@@ -72,7 +69,6 @@ router.post('/projects', (req, res) => {
         
       })
 
-
 router.put('/projects/:id', (req, res) => {
 
         if(!req.body){
@@ -106,7 +102,6 @@ router.put('/projects/:id', (req, res) => {
     
         
       })
-
 
 router.delete('/projects/:id', (req, res) => {
         Project.findByIdAndDelete(req.params.id)
@@ -160,6 +155,7 @@ router.get('/projects/:id/tickets', async (req, res) => {
        
         
       })
+
 router.post('/projects/:id/tickets', (req, res) => {
         if(!req.body.title){
           res.status(400).send({message:'what is the name of the ticket?'})
@@ -199,6 +195,7 @@ router.post('/projects/:id/tickets', (req, res) => {
     
         
       })
+
 router.put('/projects/:projectId/tickets/:id', (req, res) => {
     
         if(!req.body){
@@ -241,6 +238,7 @@ router.put('/projects/:projectId/tickets/:id', (req, res) => {
     
         
       })
+
 router.delete('/projects/:projectId/tickets/:id', (req, res) => {
         let ticketId = req.params.id
         let projectId = req.params.projectId
@@ -264,38 +262,6 @@ router.delete('/projects/:projectId/tickets/:id', (req, res) => {
 
 //NOTES
 
-router.get('/notes/:id', (req, res) => {
-  let id = req.params.id
-    Note.find({ticketId: id}).sort({sorting:1})
-    .then(notes =>{
-      res.send(notes)
-    
-    })
-    .catch(err =>{
-      res.status(500).send({message:err.message || 'ERROR'})
-    })
-
-  
-})
-router.get('/notes/:id', (req, res) => {
-  let ticketId = req.params.id
-  Note.findByIdAndDelete(ticketId)
-  .then(data =>{
-   if(!data){
-     res.status(404).send({message:'nothing to delete'})
-   } else{
-     res.send({
-       message:'ticket was deleted'
-     })
-   }
-  })
-  .catch(err=>{
-   res.status(500).send({
-     message:'could not delete the project'
-   })
-  })
- })
-
 router.get('/users', (req, res)=>{
   User.find({})
         .then(users =>{
@@ -305,6 +271,7 @@ router.get('/users', (req, res)=>{
           res.status(500).send({message:err.message || 'ERROR'})
         })
 })
+
 router.post('/register', async (req, res) =>{
     //VALIDATION
     const {error} = registerValidation(req.body)
@@ -338,6 +305,7 @@ router.post('/register', async (req, res) =>{
         res.status(400).send(err)
     }
 })
+
 router.post('/login', async (req, res) =>{
 //VALIDATION
 const {error} = loginValidation(req.body)
