@@ -120,7 +120,7 @@
         </div>
         <div class="row">
             <div class="d-flex justify-content-end" >
-                <a class="btn btn-warning add-btn" href="" data-toggle="modal" data-target="#Modalticket" >Add a new task</a>
+                <a class="btn btn-warning add-btn" href="" data-toggle="modal" data-target="#Modalticket" data-button="add" >Add a new task</a>
               </div>
               <div class="modal fade" id="Modalticket">
                 <div class="modal-dialog modal-lg">
@@ -220,7 +220,7 @@
                          
                           <ul class="tasks-item-dropdown dropdown">
                             <li> <a href="/projects/<%=ticket.projectId%>/<%=ticket._id%>" >Open in Workspace</a></li>
-                            <li><a href="/projects/<%=ticket.projectId%>/edit-ticket/<%=ticket._id%>" data-toggle="modal" data-target="#Modal<%= ticket._id %>">Edit</a></li>
+                            <li><a class="add-btn" href="/projects/<%=ticket.projectId%>/edit-ticket/<%=ticket._id%>" data-toggle="modal" data-target="#Modal<%= ticket._id %>">Edit</a></li>
                             <li><a href="/projects/<%=ticket.projectId%>/delete-ticket/<%=ticket._id%>" onclick="return confirm('Are you sure you want to delete this task?')">Delete</a></li>
                           </ul>
                           
@@ -228,7 +228,7 @@
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content modal-style">
                                 <form method="post" action="/projects/<%=ticket.projectId%>/edit-ticket/<%=ticket._id%>">
-                                  <div class="form-group mb-4 addForm">
+                                  <div class="form-group mb-4 editForm">
                                     <input type="text" class="form-control" name="title" value="<%= ticket.title %>" placeholder="Task">
                                 </div>
                                 <div class="d-flex form-group">

@@ -62,9 +62,7 @@ const app = express()
         app.get('/settings', (req, res) => {
                     res.send('PAGE FOR USER SETTINGS')
                     })
-        app.get('/trash', (req, res) => {
-                        res.send('TRASHY TRASH HERE')
-                        })
+      
 
 
             const projects = require('./routes/projects.js')

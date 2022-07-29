@@ -174,45 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })();
 
-// search typeahead
 
-  (function(){
-  const searchInput = document.querySelector('#search');
-  const suggestions = document.querySelector('.suggestions');
-  const endpoint = 'http://localhost:3000/api/projects';
-  const projects = [];
-  fetch(endpoint).then(blob => blob.json()).then(data => projects.push(...data));
-  function findMatches(wordToMatch, projects) {
-    return projects.filter(project => {
-      // here we need to figure out if the city or state matches what was searched
-      if (wordToMatch === '') return;
-      const regex = new RegExp(wordToMatch, 'gi');
-      return project.title.match(regex);
-    });
-  }
-  
-  function displayMatches() {
-  
-    if(this.value !=='') suggestions.classList.add('show')
-  else suggestions.classList.remove('show')
-  
-    const matchArray = findMatches(this.value, projects);
-    const html = matchArray.map(project => {
-      const regex = new RegExp(this.value, 'gi');
-      const id = project._id;
-      const projectName = project.title.replace(regex, `<span class="bold">${this.value}</span>`);
-      return `
-          <li>
-            <span class="project"><a href=/projects/${id}>${projectName}</a></span>
-          </li>
-        `;
-    }).join('');
-    suggestions.innerHTML = html;
-  }
-  searchInput.addEventListener('change', displayMatches);
-searchInput.addEventListener('keyup', displayMatches);
-document.body.addEventListener('click', () => suggestions.classList.remove('show'))
-  })();
 
 //focus on input after opening the modal
 
@@ -220,11 +182,24 @@ document.body.addEventListener('click', () => suggestions.classList.remove('show
   const addButtons = document.querySelectorAll('.add-btn')
   addButtons.forEach(button=>button.addEventListener('click', focusInput))
   const form = document.querySelector('.addForm')
-  function focusInput(){
+  const editform = document.querySelectorAll('.editForm')
+  function focusInput(e){
+    if(e.target.dataset.button=='add')
     setTimeout(() => {
+
         form.querySelector('input').focus()
       }, "500")
-   
+   else{
+    setTimeout(() => {
+      editform.forEach(input=>{
+        input.querySelector('input').focus()
+                //putting the cursor in the end of the word in input
+        var val = input.querySelector('input').value;
+        input.querySelector('input').value = ''
+        input.querySelector('input').value = val;
+      })
+      }, "500")
+   }
 }
   })();
 
