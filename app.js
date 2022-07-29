@@ -25,10 +25,6 @@ const app = express()
     app.use(cookieParser(process.env.SESSION_SECRET)); //same secret with session secret
 
     app.use(session({
-        cookie:{
-            secure: true,
-            maxAge:60000
-               },
         // store: new FileStore(fileStoreOptions),
         secret: process.env.SESSION_SECRET,
         resave: false,
@@ -39,13 +35,6 @@ const app = express()
       res.locals.messages = require('express-messages')(req, res);
       next();
   });
-  
-app.use(function(req,res,next){
-    if(!req.session){
-        return next(new Error('Oh no')) //handle error
-    }
-    next() //otherwise continue
-    });
         require('./config/passport')(passport)
       app.use(passport.initialize())
       app.use(passport.session())
@@ -73,7 +62,9 @@ app.use(function(req,res,next){
         app.get('/settings', (req, res) => {
                     res.send('PAGE FOR USER SETTINGS')
                     })
-      
+        app.get('/trash', (req, res) => {
+                        res.send('TRASHY TRASH HERE')
+                        })
 
 
             const projects = require('./routes/projects.js')
