@@ -76,9 +76,9 @@ const app = express()
 
     app.use('/users', users)
 
-            let port = process.env.PORT || 3000
+            let PORT = process.env.PORT || 3000
 
 
-            app.listen(port, () =>{
+            app.listen(PORT, () =>{
                 console.log('SERVER RUNNING')
             })
