@@ -45,10 +45,8 @@ const app = express()
 
 
         app.get('/', (req, res) => {
-            let isAuthenticated = req.isAuthenticated()
            
             res.render('login', {
-                isAuthenticated:isAuthenticated,
                 error: req.flash("error")
             })
             })
