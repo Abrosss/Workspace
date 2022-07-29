@@ -4,54 +4,58 @@ const passport = require('passport')
 const { response } = require('express')
 let User = require('../models/user')
 
+const {Project, Ticket, Userdata} = require('../models/project')
 exports.projects = (req, res) =>{
   let userId = req.user._id
   let title = ''
   let description = ''
-    axios.get('http://localhost:3000/api/projects')
-    .then(response=>{
-        res.render('projects', {
-            projects: response.data,
-            userId:userId,
-            title:title,
-          description:description
-          })
+  Project.find({user:userId}).populate({path:'user', select: 'username'})
+  .then(data =>{
+    res.render('projects', {
+      projects: data,
+      userId:userId,
+      title:title,
+    description:description
     })
-    .catch(err=>{
-        res.send(err)
-    })
-}
-exports.workspace = (req, res) =>{
-  let id = req.params.id
-  let ticketId = req.params.ticketId
-  let userId = req.user._id
-  axios.all([
-    axios.get(`http://localhost:3000/api/projects/${id}/tickets`),
-    axios.get('http://localhost:3000/api/projects'),
-    axios.get(`http://localhost:3000/api/notes/${ticketId}`)
-])
-.then(axios.spread((obj1,obj2,obj3)=>{
+    
+    }
+  )
+  .catch(err=>{
+    console.log(err)
+  })
+  
 
-    res.render('workspace', {
-        tickets: obj1.data,
-        userId:userId,
-        id:id,
-        projects: obj2.data,
-        ticketId:ticketId,
-        notes:obj3.data
-     
-      })
-}))
+        
+  
 }
 exports.add_project = (req, res) =>{
-        let title = ''
-        let description = ''
-    
-        res.render('projects/add_project', {
-          title:title,
-          description:description
-        })
+  let title = req.body.title
+  let description = req.body.description
+  let user =req.user._id
+
+ let project = new Project({
+  title: title,
+  description : description,
+  user : user
+
+ })
+ project.save(err =>{
+  if(err) console.log(err)
+  
+ })
+
+ Userdata.findOne({user:user}, (err, data)=>{
+  if(err) return console.log(err)
+  
+  data.projects.push(project._id)
+  data.save(err =>{
+    if(err) console.log(err)
+    res.redirect('/projects')
+   })
+ })
       }
+
+
     
 exports.tickets = (req, res) =>{
   let title = ''
@@ -61,35 +65,28 @@ exports.tickets = (req, res) =>{
     let status = ''
     let id = req.params.id
     let userId = req.user._id
-    
-    axios.all([
-        axios.get(`http://localhost:3000/api/projects/${id}/tickets`),
-        axios.get('http://localhost:3000/api/users'),
-        axios.get('http://localhost:3000/api/projects')
-    ])
-    .then(axios.spread((obj1, obj2, obj3)=>{
-      User.find(function (err, users) {
-        if(err) console.log(err)
-        console.log(users)
-        res.render('tickets', {
-          title:title,
-          description:description,
-          type:type,
-          priority:priority,
-          status:status,
-          id: id,
-          users:users,
-          tickets: obj1.data,
-          userId:userId,
-          users:obj2.data,
-          projects: obj3.data
-        })
+    Project.find({_id:id}).populate('tickets')
+    .then(data =>{
+      console.log(data)
+      res.render('tickets', {
+        project: data,
+        userId:userId,
+        title:title,
+      description:description,
+      type:type,
+      priority:priority,
+      status:status,
+      id:id
       })
-      
+      }
+    )
+    .catch(err=>{
+      console.log(err)
     })
+  
 
         
-    )}
+    }
     
         
         

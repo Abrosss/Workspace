@@ -96,8 +96,8 @@
         <div class="row stat-cards">
          
           <div class="project-header">
-        <% projects.forEach(project =>{ %>
-          <% if(project._id == id){ %>
+        <% project.forEach(project =>{ %>
+        
           
         
        
@@ -110,7 +110,7 @@
           
     
    
-            <% } %>
+          
           
       
           <% })%>
@@ -120,7 +120,7 @@
         </div>
         <div class="row">
             <div class="d-flex justify-content-end" >
-                <a class="btn btn-warning add-btn" href="/projects/add-ticket" data-toggle="modal" data-target="#Modalticket" >Add a new task</a>
+                <a class="btn btn-warning add-btn" href="" data-toggle="modal" data-target="#Modalticket" >Add a new task</a>
               </div>
               <div class="modal fade" id="Modalticket">
                 <div class="modal-dialog modal-lg">
@@ -168,7 +168,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% tickets.forEach(ticket =>{ %>
+                    <% project.forEach(project =>{ %>
+                      <% project.tickets.forEach(ticket =>{ %>
                     <tr>
                      
                       <td>
@@ -207,9 +208,9 @@
                       </td>
                       
                       <td><%= moment(ticket.created).format('MMMM D YYYY') %></td>
-                      <% if(ticket.user._id == userId){ %>
+
                       <td>
-                        <div class="d-flex  gap-3 align-items-center">
+                        <div>
                        
                         <span class="p-relative">
                           <button class="dropdown-btn transparent-btn" type="button" title="More info">
@@ -225,33 +226,21 @@
                           
                           <div class="modal fade" id="Modal<%= ticket._id %>">
                             <div class="modal-dialog modal-lg">
-                              <div class="modal-content">
+                              <div class="modal-content modal-style">
                                 <form method="post" action="/projects/<%=ticket.projectId%>/edit-ticket/<%=ticket._id%>">
-                                  <div class="form-group">
-                                    <label for="">Title</label>
-                                    <input type="text" class="form-control" name="title" value="<%= ticket.title %>" placeholder="Title">
+                                  <div class="form-group mb-4 addForm">
+                                    <input type="text" class="form-control" name="title" value="<%= ticket.title %>" placeholder="Task">
                                 </div>
-                                <div class="form-group">
-                                  <select name="type" class="form-control">
-                                    <option value="bug">bug</option>
-                                    <option value="improvement">improvement</option>
-                                  </select>
+                                <div class="d-flex form-group">
+              
+                                  <input type="radio" name="type" id="radio-bug" value="bug"/>
+                                  <label class="task-type" for="radio-bug">bug</label>
+                                  <input type="radio" name="type" id="radio-improvement" value="improvement"/>
+                                  <label for="radio-improvement" class="task-type">improvement</label>
+                              
                                   
                                 </div>
-                                
-                                <div class="form-group">
-                                    <label for="">Description</label>
-                                    <input type="text" class="form-control" name="description" value="<%= ticket.description %>" placeholder="Description">
-                                </div>
-                                
-                                <div class="form-group">
-                                  <label for="">Priority</label>
-                                  <input type="text" class="form-control" name="priority" value="<%= ticket.priority %>" placeholder="Priority">
-                                </div>
-                                <div class="form-group">
-                                  <label for="">Status</label>
-                                  <input type="text" class="form-control" name="status" value="<%= ticket.status %>" placeholder="Status">
-                                </div>
+                          
                             
                                 
                                 <button class="btn btn-primary">Submit</button>
@@ -265,12 +254,10 @@
                         </span>
                       </div>
                       </td>
-                      <% } else{ %>  
-                        <td></td>
-                     <% } %>
+               
                     </tr>
                   
-                   
+                    <% }) %>
                     <% }) %>
                   </tbody>
                 </table>

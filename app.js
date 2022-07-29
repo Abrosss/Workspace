@@ -46,7 +46,7 @@ const app = express()
 
         app.get('/', (req, res) => {
             let isAuthenticated = req.isAuthenticated()
-            console.log(req.signedCookies)
+           
             res.render('login', {
                 isAuthenticated:isAuthenticated,
                 error: req.flash("error")
@@ -68,12 +68,12 @@ const app = express()
 
 
             const projects = require('./routes/projects.js')
-    const api = require('./routes/api.js')
+
     const users = require('./routes/users.js')
 
 
     app.use('/projects', projects)  //THIS IS MAIN
-    app.use('/api', api)
+
     app.use('/users', users)
 
             let port = 3000

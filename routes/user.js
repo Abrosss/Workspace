@@ -12,19 +12,48 @@ const {
 } = require('uuid');
 
 
-const {Project, Ticket, Userdata} = require('../models/project')
+let Project = require('../models/project')
+let Ticket = require('../models/ticket')
+let User = require('../models/user')
 
 
-router.get('/', isUser, services.projects)
-router.post('/add-project', services.add_project)
+router.get('/:username', isUser, services.projects)
+
+
+
+router.post('/add-project', (req, res) => {
+  let title = req.body.title
+  let description = req.body.description
+  let user =req.user._id
+ let project = new Project({
+  title: title,
+  description : description,
+  user : user
+
+ })
+
+ project.save(err =>{
+  if(err) console.log(err)
+  res.redirect('/projects')
+ })
+
+  
+})
+
+router.get('/:id', isUser, services.tickets)
+
 router.post('/edit-project/:id', (req, res) => {
   let title = req.body.title
   let description = req.body.description
   let id = req.params.id
 
+ let project = new Project({
+  title: title,
+  description : description
+ })
+
  Project.findById(id, (err, project)=>{
   if(err) return console.log(err)
-  console.log(`yay ${title}`)
   project.title = title
   project.description = description
   project._id = id
@@ -39,31 +68,14 @@ router.post('/edit-project/:id', (req, res) => {
   
 })
 router.get('/delete-project/:id', (req, res) => {
-  let userId = req.user._id
-  let id = req.params.id
-   Project.findByIdAndRemove(req.params.id, err =>{
+  Project.findByIdAndRemove(req.params.id, err =>{
    Ticket.deleteMany({projectId:req.params.id}, err =>{
    if(err) return console.log(err)
   
-  
+   res.redirect('/projects')
    })
   })
-
-  Userdata.updateOne({ user: userId }, { "$pull": { "projects": { $eq: id } }}, { safe: true, multi:true }, function(err, obj) {
-    if(err) return console.log(err)
-    res.redirect('/projects')
-   
-});
-});
- 
-
- 
-
-
-router.get('/:id', isUser, services.tickets)
-
-
-
+ })
 router.post('/:id/add-ticket', (req, res) => {
   let username = req.user.username
   let title = req.body.title
@@ -87,16 +99,7 @@ router.post('/:id/add-ticket', (req, res) => {
 
  ticket.save(err =>{
   if(err) console.log(err)
-  
- })
- Project.findOne({_id:id}, (err, data)=>{
-  if(err) return console.log(err)
-  console.log(`so yourrrr ${data}`)
-  data.tickets.push(ticket)
-  data.save(err =>{
-    if(err) console.log(err)
-    res.redirect(`/projects/${id}`)
-   })
+  res.redirect(`/projects/${id}`)
  })
 
   
@@ -143,15 +146,8 @@ router.get('/:projectId/delete-ticket/:id', (req, res) => {
   Ticket.findByIdAndRemove(ticketId, err =>{
    if(err) return console.log(err)
 
-  
+   res.redirect(`/projects/${projectId}`)
   })
-
-  Project.updateOne({ _id: projectId }, { "$pull": { "tickets": { $eq: ticketId } }}, { safe: true, multi:true }, function(err, obj) {
-    if(err) return console.log(err)
-    res.redirect(`/projects/${projectId}`)
-   
-});
-
  })
 
   // get ADD PROJECTssio
@@ -179,6 +175,9 @@ router.get('/:projectId/delete-ticket/:id', (req, res) => {
   })
 
 
+  //POST edited project
+
+  router.get('/:id/:ticketId', isUser, services.workspace)
 
 
  

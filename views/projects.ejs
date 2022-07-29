@@ -144,7 +144,6 @@
                       </td>
                    
                       <td><%= moment(project.created).format('MMMM D YYYY') %></td>
-                      <% if(project.user._id == userId){ %>
                       <td>
                         <span class="p-relative">
                           <button class="dropdown-btn transparent-btn" type="button" title="More info">
@@ -160,20 +159,21 @@
                           
                           <div class="modal fade" id="Modal<%= project._id %>">
                             <div class="modal-dialog modal-lg">
-                              <div class="modal-content">
+                              <div class="modal-content modal-style">
                                 <form method="post" action="/projects/edit-project/<%=project._id%>">
               
-                                  <div class="form-group">
-                                    <label for="">Title</label>
-                                    <input type="text" class="form-control" name="title" value="<%= project.title %>" placeholder="Title">
-                                </div>
+                                  
+                        <div class="form-group mb-3 addForm">
+    
+                          <input type="text" class="form-control" name="title" value="<%= project.title %>" placeholder="Title" autocomplete="off">
+                      </div>
+                      
+                      <div class="form-group">
+                          
+                          <input type="text" class="form-control" name="description" value="<%= project.description %>" placeholder="Description" autocomplete="off">
+                      </div>
                                 
-                                <div class="form-group">
-                                    <label for="">Description</label>
-                                    <input type="text" class="form-control" name="description" value="<%= project.description %>" placeholder="Description">
-                                </div>
-                                
-                                <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-primary mt-4">Edit</button>
                                 
                                 
                                 
@@ -184,9 +184,7 @@
                           
                         </span>
                       </td>
-                      <% } else{ %>  
-                        <td></td>
-                     <% } %>
+             
                     </tr>
                   
                    
