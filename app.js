@@ -6,7 +6,7 @@ const config = require('./config/database')
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 var expressValidator = require('express-validator');
-const session = require('express-session')
+const session = require('cookie-session')
 const moment = require('moment');
 dotenv.config()
 
