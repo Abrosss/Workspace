@@ -25,6 +25,7 @@ body {
 }
 
 .right {
+  display: none;
   flex: 1;
   background-color: white;
   transition: 1s;
@@ -80,3 +81,18 @@ body {
 
 
 
+
+
+@media (min-width: 576px) {
+  .container {
+    justify-content: center;
+    width: 100vw;
+  }
+  
+
+}
+@media (min-width: 1520px) {
+  .right {
+    display: block;
+   }
+}
