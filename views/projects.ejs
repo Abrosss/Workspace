@@ -153,14 +153,14 @@
                          
                           <ul class="tasks-item-dropdown dropdown">
                         
-                            <li><a class="add-btn" href="/projects/edit-project/<%=project._id%>" data-toggle="modal" data-target="#Modal<%= project._id %>">Edit</a></li>
+                            <li><a class="add-btn" href="" data-toggle="modal" data-target="#Modal<%= project._id %>">Edit</a></li>
                             <li><a href="/projects/delete-project/<%=project._id%>" onclick="return confirm('Are you sure you want to delete this project?')">Delete</a></li>
                           </ul>
                           
                           <div class="modal fade" id="Modal<%= project._id %>">
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content modal-style">
-                                <form method="post" action="/projects/edit-project/<%=project._id%>">
+                                <form class="edit-form" method="put" action="/projects/edit-project/<%= project._id %>" data-projectId="<%= project._id %>">
               
                                   
                         <div class="form-group mb-3 editForm">
@@ -173,7 +173,7 @@
                           <input type="text" class="form-control" name="description" value="<%= project.description %>" placeholder="Description" autocomplete="off">
                       </div>
                                 
-                        <button class="btn btn-primary mt-4">Edit</button>
+                        <button type="submit" class="btn btn-primary mt-4 btn-edit" >Edit</button>
                                 
                                 
                                 

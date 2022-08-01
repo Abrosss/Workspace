@@ -1628,27 +1628,27 @@ input:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-calendar-picker-in
 
 /* label tags styling */
 
-input[type="radio"]#radio-bug + label {
+input[type="radio"].bug + label {
 
   color: #E91E63;
 }
 
-input[type="radio"]#radio-improvement + label {
+input[type="radio"].improvement + label {
 
   color: #3F51B5;
 }
 
-input[type="radio"]#radio-bug:hover + label,
-input[type="radio"]#radio-bug:checked + label,
-input[type="radio"]#radio-bug:focus + label{
+input[type="radio"].bug:hover + label,
+input[type="radio"].bug:checked + label,
+input[type="radio"].bug:focus + label{
   cursor: pointer;
   background-color: #E91E63;
   color: #FFFFFF;
 }
 
-input[type="radio"]#radio-improvement:hover + label,
-input[type="radio"]#radio-improvement:checked + label,
-input[type="radio"]#radio-improvement:focus + label{
+input[type="radio"].improvement:hover + label,
+input[type="radio"].improvement:checked + label,
+input[type="radio"].improvement:focus + label{
   cursor: pointer;
   background-color: #3F51B5;
   color: #FFFFFF;
