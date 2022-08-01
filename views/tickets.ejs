@@ -132,9 +132,9 @@
                     </div>
                     <div class="d-flex form-group">
               
-                      <input type="radio" name="type" id="radio-bug" value="bug"/>
+                      <input type="radio" name="type" class="bug" id="radio-bug" value="bug"/>
                       <label class="task-type" for="radio-bug">bug</label>
-                      <input type="radio" name="type" id="radio-improvement" value="improvement"/>
+                      <input type="radio" name="type" class="improvement" id="radio-improvement" value="improvement"/>
                       <label for="radio-improvement" class="task-type">improvement</label>
                   
                       
@@ -227,27 +227,27 @@
                           <div class="modal fade" id="Modal<%= ticket._id %>">
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content modal-style">
-                                <form method="post" action="/projects/<%=ticket.projectId%>/edit-ticket/<%=ticket._id%>">
+                                <form class="edit-ticket" method="put" data-ticketid="<%=ticket._id%>">
                                   <div class="form-group mb-4 editForm">
                                     <input type="text" class="form-control" name="title" value="<%= ticket.title %>" placeholder="Task">
                                 </div>
                                 <div class="d-flex form-group">
               
-                                  <input type="radio" name="type" id="radio-bug" value="bug"/>
-                                  <label class="task-type" for="radio-bug">bug</label>
-                                  <input type="radio" name="type" id="radio-improvement" value="improvement"/>
-                                  <label for="radio-improvement" class="task-type">improvement</label>
+                                  <input type="radio" name="type" class="bug" id="bug<%= ticket._id %>" value="bug"/>
+                                  <label class="task-type" for="bug<%= ticket._id %>">bug</label>
+                                  <input type="radio" name="type" class="improvement" id="imp<%= ticket._id %>" value="improvement"/>
+                                  <label for="imp<%= ticket._id %>" class="task-type">improvement</label>
                               
                                   
                                 </div>
                           
                             
                                 
-                                <button class="btn btn-primary">Submit</button>
-                                
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
                                 </div>
                                 
-                                </form>
+                                
                               </div>
                             </div>
                           

@@ -5,17 +5,18 @@ const { response } = require('express')
 let User = require('../models/user')
 
 const {Project, Ticket, Userdata} = require('../models/project')
+
 exports.projects = (req, res) =>{
   let userId = req.user._id
   let title = ''
   let description = ''
-  Project.find({user:userId}).populate({path:'user', select: 'username'})
-  .then(data =>{
+  axios.get(`https://workspace-bugtracker-api.herokuapp.com/user/${userId}/projects`)
+  .then(response =>{
     res.render('projects', {
-      projects: data,
+      projects: response.data,
       userId:userId,
       title:title,
-    description:description
+      description:description
     })
     
     }
@@ -33,26 +34,22 @@ exports.add_project = (req, res) =>{
   let description = req.body.description
   let user =req.user._id
 
- let project = new Project({
-  title: title,
-  description : description,
-  user : user
+axios({
+  method:'post',
+  url: `https://workspace-bugtracker-api.herokuapp.com/user/${user}/projects`,
+  data: {
+    title:title,
+    description:description,
+    user:user
+  }
+})
+.then(response=> {
+  res.redirect('/projects')}
+  )
+.catch(err=>{
+    console.log(err)
+  })
 
- })
- project.save(err =>{
-  if(err) console.log(err)
-  
- })
-
- Userdata.findOne({user:user}, (err, data)=>{
-  if(err) return console.log(err)
-  
-  data.projects.push(project._id)
-  data.save(err =>{
-    if(err) console.log(err)
-    res.redirect('/projects')
-   })
- })
       }
 
 
@@ -65,11 +62,11 @@ exports.tickets = (req, res) =>{
     let status = ''
     let id = req.params.id
     let userId = req.user._id
-    Project.find({_id:id}).populate('tickets')
-    .then(data =>{
-      console.log(data)
+    axios.get(`https://workspace-bugtracker-api.herokuapp.com/projects/${id}`)
+    .then(response =>{
+      console.log(response.data)
       res.render('tickets', {
-        project: data,
+        project: response.data,
         userId:userId,
         title:title,
       description:description,
