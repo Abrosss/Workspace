@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser= require('body-parser')
 const mongoose = require('mongoose')
+
 const dotenv = require('dotenv')
 const config = require('./config/database')
 const passport = require('passport')
@@ -50,6 +51,22 @@ const app = express()
                 error: req.flash("error")
             })
             })
+        app.get('/register', (req, res) => {
+                res.render('register', {
+                  title:'Register',
+                  error:req.flash("error")
+                })
+               
+              })
+          app.get('/login', (req, res) => {
+                if(res.locals.user) res.redirect('/')
+                
+                res.render('login', {
+                  error: req.flash("error"),
+                  title:'Log in',
+                  user:req.user
+                })
+              })
             app.get('/home', (req, res) => {
              
                 res.render('index')

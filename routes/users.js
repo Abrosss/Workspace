@@ -2,6 +2,7 @@
 
 
 const express = require('express')
+const axios = require('axios')
 const project = require('../models/project')
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
@@ -11,64 +12,35 @@ let User = require('../models/user')
 const {Userdata} = require('../models/project')
 
 
-router.get('/register', (req, res) => {
-    res.render('register', {
-      title:'Register',
-      error:req.flash("error")
+
+
+  router.post('/register', (req, res) => {
+
+     let name = req.body.name
+     let username = req.body.username
+     let email = req.body.email
+     let password =req.body.password
+     let confirm_password = req.body.confirm_password
+     let admin = false
+
+     axios({
+      method:'post',
+      url: `https://workspace-bugtracker-api.herokuapp.com/user/register`,
+      data: {
+        username:username,
+        password:password,
+        confirm_password:confirm_password
+      }
     })
-   
-  })
-
-  router.post('/register', async (req, res) => {
-
-     //VALIDATION
-
-    const {error} = registerValidation(req.body, req.body.confirm_password)
-
-    if(error){
-    res.status(400)
-    res.render('register', {
-      error:error.details[0].message,
-      title:'register',
-      user:null
-    })
-  }
-      
-
-     //check if username exists
-    //  const emailExists = await User.findOne({email:req.body.email})
-     const usernameExists = await User.findOne({username:req.body.username})
-     if(usernameExists) 
-      return res.status(400).send('Create a unique username')
-      // if(emailExists) return res.status(400).send('Email already exists!')
-      // res.redirect('/users/register')
-    
-    //HASH THE PW
-
-   const salt = await bcrypt.genSalt(10)
-   const hashPassword = await bcrypt.hash(req.body.password, salt)
-
-     //CREATE USER
-    
-     let user = new User({
-      name:req.body.name,
-      username:req.body.username, 
-      email:req.body.email,
-      password:hashPassword,
-      admin:false
-  })
-      let userId = new Userdata({
-        user:user._id
+    .then(response=> {
+      res.redirect(`/login`)}
+      )
+    .catch(err=>{
+        console.log(err)
       })
-           //SAVE USER
-    try{
-      const savedUser = await user.save()
-      const savedId = await userId.save()
-      res.redirect('/users/login')
-  } catch(err){
-      res.status(400).send(err)
-  }
-        })
+  })
+
+        
        
     
 
@@ -76,15 +48,7 @@ router.get('/register', (req, res) => {
   
 
 
-  router.get('/login', (req, res) => {
-    if(res.locals.user) res.redirect('/')
-    
-    res.render('login', {
-      error: req.flash("error"),
-      title:'Log in',
-      user:req.user
-    })
-  })
+
 
 
   router.post('/login', (req, res, next) => {
