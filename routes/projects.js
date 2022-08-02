@@ -16,10 +16,10 @@ const {
 const {Project, Ticket, Userdata} = require('../models/project')
 
 
-router.get('/', isUser, services.projects)
+router.get('/', services.projects)
 router.post('/add-project', services.add_project)
 router.get('/delete-project/:id', (req, res) => {
-  let userId = req.user._id
+  let userId = req.app.locals.userId
   let id = req.params.id
   axios({
     method:'delete',
@@ -34,16 +34,14 @@ router.get('/delete-project/:id', (req, res) => {
 
   
 });
-router.get('/:id', isUser, services.tickets)
+router.get('/:id', services.tickets)
 router.post('/:id/add-ticket', (req, res) => {
-  let username = req.user.username
   let title = req.body.title
   let description = req.body.description
   let type = req.body.type
   let priority = req.body.priority
   let status = 'open'
   let id = req.params.id
-  let user = req.user._id
 
 axios({
   method:'post',

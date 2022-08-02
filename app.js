@@ -11,23 +11,32 @@ const session = require('express-session')
 const moment = require('moment');
 dotenv.config()
 
-mongoose.connect(config.database)
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', () =>{
-    console.log('connected to mongodb')
-})
+// mongoose.connect(config.database)
+// const db = mongoose.connection
+// db.on('error', console.error.bind(console, 'connection error:'))
+// db.once('open', () =>{
+//     console.log('connected to mongodb')
+// })
 const app = express()
     app.set('view engine', 'ejs')
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
     app.use(express.static('public'))
-    app.locals.moment = require('moment');    //https://stackoverflow.com/questions/12794860/how-to-use-node-modules-like-momentjs-in-ejs-views
+
+    // if login auth is not working user the guest account id (only for production)
+    app.use(function(req, res, next){
+      if(!req.user) app.locals.userId = '62e8e73fed3e109b78b231f0'
+      else app.locals.userId = req.user._id
+      next()
+    })
+
+    app.locals.moment = require('moment');  
+      //https://stackoverflow.com/questions/12794860/how-to-use-node-modules-like-momentjs-in-ejs-views
     app.use(cookieParser(process.env.SESSION_SECRET)); //same secret with session secret
 
     app.use(session({
         // store: new FileStore(fileStoreOptions),
-        secret: process.env.SESSION_SECRET,
+        secret: process.env.SESSION_SECRET || 'secret',
         resave: false,
         saveUninitialized: true
       }))

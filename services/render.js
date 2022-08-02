@@ -6,8 +6,9 @@ let User = require('../models/user')
 
 const {Project, Ticket, Userdata} = require('../models/project')
 
+
 exports.projects = (req, res) =>{
-  let userId = req.user._id
+  let userId = req.app.locals.userId
   let title = ''
   let description = ''
   axios.get(`https://workspace-bugtracker-api.herokuapp.com/user/${userId}/projects`)
@@ -32,15 +33,14 @@ exports.projects = (req, res) =>{
 exports.add_project = (req, res) =>{
   let title = req.body.title
   let description = req.body.description
-  let user =req.user._id
-
+  let userId = req.app.locals.userId
 axios({
   method:'post',
-  url: `https://workspace-bugtracker-api.herokuapp.com/user/${user}/projects`,
+  url: `https://workspace-bugtracker-api.herokuapp.com/user/${userId}/projects`,
   data: {
     title:title,
     description:description,
-    user:user
+    user:userId
   }
 })
 .then(response=> {
@@ -61,7 +61,7 @@ exports.tickets = (req, res) =>{
     let priority = ''
     let status = ''
     let id = req.params.id
-    let userId = req.user._id
+    let userId = req.app.locals.userId
     axios.get(`https://workspace-bugtracker-api.herokuapp.com/projects/${id}`)
     .then(response =>{
       console.log(response.data)
