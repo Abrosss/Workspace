@@ -3,7 +3,7 @@ const bodyParser= require('body-parser')
 const mongoose = require('mongoose')
 
 const dotenv = require('dotenv')
-const config = require('./config/database')
+// const config = require('./config/database')
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 var expressValidator = require('express-validator');

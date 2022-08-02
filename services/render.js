@@ -1,10 +1,9 @@
 const axios = require('axios')
 const session = require('express-session')
 const passport = require('passport')
-const { response } = require('express')
-let User = require('../models/user')
 
-const {Project, Ticket, Userdata} = require('../models/project')
+
+// const {Project, Ticket, Userdata} = require('../models/project')
 
 
 exports.projects = (req, res) =>{

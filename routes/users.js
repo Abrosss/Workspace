@@ -3,13 +3,11 @@
 
 const express = require('express')
 const axios = require('axios')
-const project = require('../models/project')
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const router = express.Router()
-const {registerValidation, loginValidation} = require('../config/validation')
-let User = require('../models/user')
-const {Userdata} = require('../models/project')
+// const {registerValidation, loginValidation} = require('../config/validation')
+// const {Userdata} = require('../models/project')
 
 
 

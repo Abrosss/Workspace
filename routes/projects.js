@@ -5,8 +5,8 @@ const session = require('express-session')
 const passport = require('passport')
 const Fs = require('fs')
 const services = require('../services/render.js')
-const auth = require('../config/auth')
-const isUser = auth.isUser
+// const auth = require('../config/auth')
+// const isUser = auth.isUser
 const { 
   v1: uuidv1,
   v4: uuidv4,
