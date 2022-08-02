@@ -45,13 +45,13 @@ const app = express()
       res.locals.messages = require('express-messages')(req, res);
       next();
   });
-        require('./config/passport')(passport)
-      app.use(passport.initialize())
-      app.use(passport.session())
-      app.use(function(req, res, next){
-          res.locals.user = req.user || null
-          next();
-        })
+      //   require('./config/passport')(passport)
+      // app.use(passport.initialize())
+      // app.use(passport.session())
+      // app.use(function(req, res, next){
+      //     res.locals.user = req.user || null
+      //     next();
+      //   })
 
 
         app.get('/', (req, res) => {

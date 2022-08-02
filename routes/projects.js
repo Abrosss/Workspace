@@ -13,7 +13,7 @@ const {
 } = require('uuid');
 
 
-const {Project, Ticket, Userdata} = require('../models/project')
+// const {Project, Ticket, Userdata} = require('../models/project')
 
 
 router.get('/', services.projects)
