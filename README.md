@@ -19,7 +19,7 @@ _Find a bug, Research, Fix, Save the process for similar tasks in future_ <br />
 Right now the functionality is limited to creating a project and tasks to it. Time to expand! :rocket:
 
 ## Test
-This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. Please login with these credentials: username: `user` password: `user`. Or create a new account. NO EMAIL REQUIRED. <br />
+This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. Please login with these credentials: username: `workspace` password: `workspace`. Or create a new account. NO EMAIL REQUIRED. <br />
 _Do not enter any confidential information_, the project is in development stage, so database can be restructured or deleted at any time. <br />
 The <a href="https://github.com/Abrosss/Workspace/issues">issues list</a> is up to date! If you want to contribute please follow the instructions below.
 
