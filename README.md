@@ -1,6 +1,6 @@
 # Workspace
 **Project management tool, bugtracker** <br />
-[![Issues](https://img.shields.io/github/issues-raw/tterb/PlayMusic.svg?maxAge=25000)](https://github.com/Abrosss/Workspace/issues)
+https://img.shields.io/bitbucket/issues/Abrosss/Workspace  <br />
 status: _IN DEVELOPMENT_ (draft stage) <br />
 Design and styling of elements are going to be changed.
 
