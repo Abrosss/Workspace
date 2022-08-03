@@ -11,7 +11,7 @@ Hello! You are very welcome. This is a place for you if you are looking for prac
 
 ## Test
 This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. Please login with these credentials: username: `user` password: `user`. Or create a new account. NO EMAIL REQUIRED. <br />
-_Do not enter any confidential information_, the project is in development stage, so database can be deleted and restructured at any time. <br />
+_Do not enter any confidential information_, the project is in development stage, so database can be restructured or deleted at any time. <br />
 The <a href="https://github.com/Abrosss/Workspace/issues">issues list</a> is up to date! If you want to contribute please follow the instructions below.
 
 
