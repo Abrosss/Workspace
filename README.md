@@ -2,12 +2,18 @@
 **Project management tool, bugtracker** <br />
 
 status: _IN DEVELOPMENT_ (draft stage) <br />
-Design and styling of elements are going to be changed.
+Design and styling of elements are going to be changed. <br />
+
+## Test
+<p>This is the <a href="https://workspace-bugtracker.herokuapp.com/>demo</a> of the website. Please login with these credentials: username: `user` password: `user`. Or create a new account. NO EMAIL REQUIRED. <p>
+<p>Do not enter any confidential information, the project is in development stage, so database can be deleted and restructured at any time.</p> 
+<p>The issues list is up to date! If you want to contribute please follow the instructions below.</p>
+
 
 <!-- How to contribute -->
 ## How to contribute
 If you have a suggestion that would make this project better, please fork the repository and create a pull request.
-Any contributions you make are **greatly appreciated**! Thank you!
+Any contributions you make are greatly appreciated! Thank you!
 Here are the instructions on setting up the project locally.
 
 _Replace everything in angle brackets with your <relevant_data> without including the brackets_
