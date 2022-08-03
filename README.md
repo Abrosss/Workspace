@@ -1,6 +1,6 @@
 # Workspace
-**Project management tool, bugtracker**
-status: _IN DEVELOPMENT_ (draft stage) 
+**Project management tool, bugtracker** <br />
+status: _IN DEVELOPMENT_ (draft stage) <br />
 Design and styling of elements are going to be changed.
 
 <!-- How to contribute -->
