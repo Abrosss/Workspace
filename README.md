@@ -10,13 +10,13 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
 Hello! You are very welcome. This is a place for you if you are looking for practice! The bugtracker project covers all kinds of issues, from small to big, on a client and server side. It helps you learn and explore! Please join and start your open source journey right now! :mag:
 
 ## Idea
-The idea of the project is creating a workspace environment for each task or issue in a project, that includes: 
+The idea of the project is creating a workspace environment for each task or issue in a project created by a user, that includes: 
 - sticky notes for brainstorming, 
 - a todolist for organizing a process (with a possibility to name and save the todolist to your profile, and search through all your saved `process trees` and pin it to another project in future).<br />
 
 In short:
 _Find a bug, Research, Fix, Save the process for similar tasks in future_ <br />
-Right now the functionality is limited to creating a project and tasks to it. Time to expand!
+Right now the functionality is limited to creating a project and tasks to it. Time to expand! :rocket:
 
 ## Test
 This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. Please login with these credentials: username: `user` password: `user`. Or create a new account. NO EMAIL REQUIRED. <br />
@@ -87,3 +87,6 @@ You have now created a pull request! It's going to be reviewed!
 
 
 
+## TO-DO-LIST
+- Individual issue `workspace`
+- the bugtracker for TEAMS
