@@ -33,7 +33,7 @@ Note: _during production process the authentication system is not working, only 
 
 Here are the instructions on setting up the project locally.
 
-_Replace everything in angle brackets with your <relevant_data> without including the brackets_
+Replace everything in angle brackets with your _<relevant_data>_ without including the brackets
 
 ### Installation
 
