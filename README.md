@@ -7,7 +7,7 @@
 status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements are going to be changed._) <br />
 
 
-Hello! You are very welcome. This is a place for you if you are looking for practice! The bugtracker project covers all kinds of issues, from small to big, on a client and a server side. It helps you learn and explore! Please join and start your open source journey right now! :mag:
+Hello! You are very welcome. This is a place for you if you are looking for practice! The bugtracker project covers all kinds of issues, from small to big, on a client and server side. It helps you learn and explore! Please join and start your open source journey right now! :mag:
 
 ## Test
 This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. Please login with these credentials: username: `user` password: `user`. Or create a new account. NO EMAIL REQUIRED. <br />
