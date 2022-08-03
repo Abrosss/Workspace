@@ -4,7 +4,7 @@ status: IN DEVELOPMENT, draft stage. Design decisions, styling of elements are g
 The project is being created for learning purposes, and it going to be upgraded every day
 
 <!-- How to contribute -->
-## Getting Started
+## How to contribute
 
 Here are the instructions on setting up the project locally.
 
@@ -12,7 +12,7 @@ Here are the instructions on setting up the project locally.
 
 1. Fork <a href="https://github.com/Abrosss/Workspace">this</a> repository
 2. Clone your fork
- ```sh
+   ```sh
    git clone  https://github.com/<your_name>/Workspace.git
    ```
 3. Navigate to the project directory
