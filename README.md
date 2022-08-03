@@ -80,7 +80,8 @@ You have now created a pull request! It's going to be reviewed!
 ## The project TO-DO-LIST
 The idea of the project is creating a workspace environment for each task or issue in a project, that includes: 
 - sticky notes for brainstorming, 
-- a todolist for organizing a process (with a possibility to name and save the todolist to your profile, and search through all your saved `process trees` and pin it to another project in future). <br />
+- a todolist for organizing a process (with a possibility to name and save the todolist to your profile, and search through all your saved `process trees` and pin it to another project in future).<br />
+
 In short:
 _Find a bug, Research, Fix, Save the process for similar tasks in future_ <br />
 Right now the functionality is limited to creating a project and tasks to it. Time to expand!
