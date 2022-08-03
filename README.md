@@ -1,14 +1,15 @@
 # Workspace
-Project management tool, bugtracker
-status: IN DEVELOPMENT, draft stage. Design decisions, styling of elements are going to be changed.
-The project is being created for learning purposes, and it going to be upgraded every day
+**Project management tool, bugtracker**
+status: _IN DEVELOPMENT_ (draft stage) 
+Design and styling of elements are going to be changed.
 
 <!-- How to contribute -->
 ## How to contribute
-
+If you have a suggestion that would make this project better, please fork the repository and create a pull request.
+Any contributions you make are **greatly appreciated**! Thank you!
 Here are the instructions on setting up the project locally.
 
-Replace everything in angle brackets with your <relevant_data> without including the brackets
+_Replace everything in angle brackets with your <relevant_data> without including the brackets_
 
 ### Installation
 
