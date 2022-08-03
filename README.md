@@ -41,7 +41,7 @@ Replace everything in angle brackets with your <relevant_data> without including
    ```sh
    npm install
    ```
-9. Make changes in your local repository.
+9. Make changes to files.
 10. Track your changes.
    ```sh
    git add .
