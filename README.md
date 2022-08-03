@@ -8,14 +8,16 @@ The project is being created for learning purposes, and it going to be upgraded 
 
 Here are the instructions on setting up the project locally.
 
+Replace everything in angle brackets with your <relevant_data> without including the brackets
+
 ### Installation
 
-1. Fork <a href="https://github.com/Abrosss/Workspace">this</a> repository
-2. Clone your fork
+1. Fork <a href="https://github.com/Abrosss/Workspace">this</a> repository.
+2. Clone your fork.
    ```sh
    git clone  https://github.com/<your_name>/Workspace.git
    ```
-3. Navigate to the project directory
+3. Navigate to the project directory.
    ```sh
    cd Workspace
    ```
@@ -39,14 +41,14 @@ Here are the instructions on setting up the project locally.
    ```sh
    npm install
    ```
-9. Make changes in your local repository
-10. Track your changes
+9. Make changes in your local repository.
+10. Track your changes.
    ```sh
    git add .
    ```
-11. Commit your changes
+11. Commit your changes.
    ```sh
-   git commit -m "DESCRIPTION OF CHANGES"
+   git commit -m "<description_of_changes>"
    ```
 12. Push these changes in your branch to your fork
    ```sh
