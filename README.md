@@ -58,5 +58,5 @@ Replace everything in angle brackets with your <relevant_data> without including
 14. Add a title and description to your pull request explaining the changes you made.
 15. Click the green `Create pull request` button.
 
-You have now created a pull request!
+You have now created a pull request! It's going to be reviewed!
 
