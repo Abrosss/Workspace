@@ -12,6 +12,7 @@ exports.projects = (req, res) =>{
   let description = ''
   axios.get(`https://workspace-bugtracker-api.herokuapp.com/user/${userId}/projects`)
   .then(response =>{
+    console.log(response.data)
     res.render('projects', {
       projects: response.data,
       userId:userId,
