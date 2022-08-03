@@ -1,6 +1,6 @@
-# Workspace
-**Project management tool, bugtracker**
-[![Issues](https://img.shields.io/bitbucket/issues/Abrosss/Workspace)](https://github.com/Abrosss/Workspace/issues)  
+# Workspace [![Issues](https://img.shields.io/bitbucket/issues/Abrosss/Workspace)](https://github.com/Abrosss/Workspace/issues)  
+**Project management tool, bugtracker** <br />
+
 status: _IN DEVELOPMENT_ (draft stage) <br />
 Design and styling of elements are going to be changed.
 
