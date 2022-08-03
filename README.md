@@ -14,7 +14,7 @@ The <a href="https://github.com/Abrosss/Workspace/issues">issues list</a> is up 
 ## How to contribute
 If you have a suggestion that would make this project better or you want to practice and fix one of the <a href="https://github.com/Abrosss/Workspace/issues">issues</a>, please fork the repository and create a pull request.
 Any contributions you make are greatly appreciated! Thank you! <br />
-Note: (_during production a guest account is used by default, a connection to the database happens through API, so you can focus on bugtracker features and issues_)
+Note: (_during production a guest account is used by default, a connection to the database happens through API, so you can focus on bugtracker features and issues_) <br />
 Here are the instructions on setting up the project locally.
 
 _Replace everything in angle brackets with your <relevant_data> without including the brackets_
