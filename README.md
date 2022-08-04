@@ -16,7 +16,7 @@ _Find a bug, Research, Fix, Save the process for similar tasks in future_ <br />
 Right now the functionality is limited to creating a project and tasks to it. Time to expand! :rocket:
 
 ## Test
-This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. **Username: `workspace` Password: `workspace`.** <br />
+This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. Username: `workspace` Password: `workspace`. <br />
 
 
 <!-- How to contribute -->
