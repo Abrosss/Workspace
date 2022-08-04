@@ -6,9 +6,6 @@
 
 status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements are going to be changed._) <br />
 
-
-Hello! You are very welcome. This is a place for you if you are looking for practice! The bugtracker project covers all kinds of issues, from small to big, on a client and server side. It helps you learn and explore! Please join and start your open source journey right now! :mag:
-
 ## Idea
 The idea of the project is creating a _workspace_ environment for each task or issue in a project created by a user, that includes: 
 - sticky notes for brainstorming, 
