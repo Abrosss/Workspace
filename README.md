@@ -1,4 +1,4 @@
-# Workspace [![Issues](https://img.shields.io/bitbucket/issues/Abrosss/Workspace)](https://github.com/Abrosss/Workspace/issues)  
+# Workspace
 
 **Project management tool, bugtracker** <br />
 
