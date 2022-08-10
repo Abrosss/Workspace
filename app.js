@@ -1,9 +1,7 @@
 const express = require('express')
 const bodyParser= require('body-parser')
 const mongoose = require('mongoose')
-
 const dotenv = require('dotenv')
-// const config = require('./config/database')
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 var expressValidator = require('express-validator');
@@ -11,27 +9,20 @@ const session = require('express-session')
 const moment = require('moment');
 dotenv.config()
 
-// mongoose.connect(config.database)
-// const db = mongoose.connection
-// db.on('error', console.error.bind(console, 'connection error:'))
-// db.once('open', () =>{
-//     console.log('connected to mongodb')
-// })
+mongoose.connect('') //< paste the database connection string
+const db = mongoose.connection
+db.on('error', console.error.bind(console, 'connection error:'))
+db.once('open', () =>{
+    console.log('connected to mongodb')
+})
+
+
 const app = express()
     app.set('view engine', 'ejs')
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
     app.use(express.static('public'))
-
-    // if login auth is not working user the guest account id (only for production)
-    app.use(function(req, res, next){
-      if(!req.user) app.locals.userId = '62e8e73fed3e109b78b231f0'
-      else app.locals.userId = req.user._id
-      next()
-    })
-
-    app.locals.moment = require('moment');  
-      //https://stackoverflow.com/questions/12794860/how-to-use-node-modules-like-momentjs-in-ejs-views
+    app.locals.moment = require('moment');    //https://stackoverflow.com/questions/12794860/how-to-use-node-modules-like-momentjs-in-ejs-views
     app.use(cookieParser(process.env.SESSION_SECRET)); //same secret with session secret
 
     app.use(session({
@@ -45,13 +36,13 @@ const app = express()
       res.locals.messages = require('express-messages')(req, res);
       next();
   });
-      //   require('./config/passport')(passport)
-      // app.use(passport.initialize())
-      // app.use(passport.session())
-      // app.use(function(req, res, next){
-      //     res.locals.user = req.user || null
-      //     next();
-      //   })
+        require('./config/passport')(passport)
+      app.use(passport.initialize())
+      app.use(passport.session())
+      app.use(function(req, res, next){
+          res.locals.user = req.user || null
+          next();
+        })
 
 
         app.get('/', (req, res) => {
@@ -76,29 +67,33 @@ const app = express()
                   user:req.user
                 })
               })
-            app.get('/home', (req, res) => {
+          app.get('/home', (req, res) => {
              
-                res.render('index')
+                res.render('pages/dashboard')
+                })
+          app.get('/workspace', (req, res) => {
+             
+                res.render('pages/workspace')
                 })
         app.get('/profile', (req, res) => {
                 res.send('PROFILE WILL BE HERE SOON')
                 })
         app.get('/settings', (req, res) => {
-                    res.send('PAGE FOR USER SETTINGS')
+                res.send('PAGE FOR USER SETTINGS')
                     })
         app.get('/trash', (req, res) => {
-                        res.send('TRASHY TRASH HERE')
+                res.send('TRASHY TRASH HERE')
                         })
 
 
             const projects = require('./routes/projects.js')
 
-    // const users = require('./routes/users.js')
+    const users = require('./routes/users.js')
 
 
     app.use('/projects', projects)  //THIS IS MAIN
 
-    // app.use('/users', users)
+    app.use('/users', users)
 
             const PORT = process.env.PORT || 5000
 

@@ -1,4 +1,4 @@
-<%- include('layout/header.html'); %>
+<%- include('../layout/header.html'); %>
 <div class="page-flex">
   <!-- ! Sidebar -->
   <aside class="sidebar">
@@ -152,7 +152,7 @@
                       <div class="modal fade" id="Modal<%= project._id %>">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content modal-style">
-                            <form class="edit-form" method="put" action="/projects/edit-project/<%= project._id %>" data-projectId="<%= project._id %>">
+                            <form class="edit-form" method="put" action="/projects/<%= project._id %>" data-projectId="<%= project._id %>">
           
                               
                     <div class="form-group mb-3 editForm">
@@ -165,7 +165,7 @@
                       <input type="text" class="form-control" name="description" value="<%= project.description %>" placeholder="Description" autocomplete="off">
                   </div>
                             
-                    <button type="submit" class="btn btn-primary mt-4 btn-edit" >Edit</button>
+                    <button type="submit" class="btn btn-primary mt-4 btn-edit" data-projectId="<%= project._id %>" >Edit</button>
                             
                             
                             
@@ -239,4 +239,4 @@
         </footer>
       </div>
 </div>
-  <%- include('layout/footer.html'); %>
+  <%- include('../layout/footer.html'); %>

@@ -1,0 +1,329 @@
+<%- include('../layout/header.html'); %>
+<div class="page-flex">
+  <!-- ! Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-start">
+        <div class="sidebar-head">
+            <a href="/home" class="logo-wrapper" title="Home">
+                <span class="sr-only">Home</span>
+                <div class="logo-text">
+                  <span class="logo-title">Workspace</span>
+                  <span class="logo-subtitle">Fix & Learn</span>
+              </div>
+
+            </a>
+            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                <span class="sr-only">Toggle menu</span>
+                <span class="icon menu-toggle" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="sidebar-body">
+            <ul class="sidebar-body-menu">
+                <li>
+                    <a href="/home"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
+                </li>
+                <li>
+                  <a class="active" href="/projects"><span class="icon document" aria-hidden="true"></span>Projects</a>
+              </li>
+             
+            </ul>
+         
+        </div>
+    </div>
+    <div class="sidebar-footer">
+      <ul class="sidebar-body-menu">
+     
+        <li>
+            <a href="##"><span class="icon setting" aria-hidden="true"></span>Settings</a>
+        </li>
+    </ul>
+    </div>
+</aside>
+  <div class="main-wrapper">
+    <!-- ! Main nav -->
+    <nav class="main-nav--bg">
+  <div class="container main-nav">
+    <div class="main-nav-start">
+      <div class="search-wrapper">
+        <i data-feather="search" aria-hidden="true"></i>
+        <input type="text" id="search" placeholder="Search for projects..." autocomplete="off" required>
+        <ul class="suggestions">
+        
+        </ul>
+      </div>
+      
+    </div>
+    <div class="main-nav-end">
+      <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+        <span class="sr-only">Toggle menu</span>
+        <span class="icon menu-toggle--gray" aria-hidden="true"></span>
+      </button>
+     
+      <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
+        <span class="sr-only">Switch theme</span>
+        <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+        <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+      </button>
+     
+      <div class="nav-user-wrapper">
+        <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
+          <span class="sr-only">My profile</span>
+          <span class="nav-user-img">
+            <picture><source srcset="/img/avatar/avatar-illustrated-02.webp" type="image/webp"><img src="/img/avatar/avatar-illustrated-02.png" alt="User name"></picture>
+          </span>
+        </button>
+        <ul class="tasks-item-dropdown nav-user-dropdown dropdown">
+          <li><a href="##">
+              <i data-feather="user" aria-hidden="true"></i>
+              <span>Profile</span>
+            </a></li>
+          <li><a href="##">
+              <i data-feather="settings" aria-hidden="true"></i>
+              <span>Account settings</span>
+            </a></li>
+          <li><a class="danger" href="/users/logout">
+              <i data-feather="log-out" aria-hidden="true"></i>
+              <span>Log out</span>
+            </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+    <!-- ! Main -->
+    <main class="main tasks" id="skip-target">
+      <div class="container">
+        <div class="row stat-cards">
+         
+          <div class="project-header">
+        <% project.forEach(project =>{ %>
+        
+          
+        
+       
+            <div>
+            <h2 class="main-title"><strong><%= project.title %></strong></h2>
+           
+          </div>
+          <div></div>
+          </div>
+          
+    
+   
+          
+          
+      
+          <% })%>
+        
+        
+          
+        </div>
+        <div class="row">
+            <div class="d-flex justify-content-end" >
+                <a class="btn btn-warning add-btn" href="" data-toggle="modal" data-target="#Modalticket" data-button="add" >Add a new task</a>
+              </div>
+              <div class="modal fade" id="Modalticket">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content modal-style">
+                    <form method="post" action="/projects/<%= id %>/add-ticket">
+
+                      <div class="form-group mb-4 addForm">
+                        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Task">
+                    </div>
+                    <div class="d-flex form-group">
+              
+                      <input type="radio" name="type" class="bug" id="radio-bug" value="bug"/>
+                      <label class="task-type" for="radio-bug">bug</label>
+                      <input type="radio" name="type" class="improvement" id="radio-improvement" value="improvement"/>
+                      <label for="radio-improvement" class="task-type">improvement</label>
+                  
+                      
+                    </div>
+                
+                    
+                
+                    
+                  
+        
+              
+                    
+                    <button class="btn btn-primary mt-3">Add a task</button>
+                    
+                    </div>
+                    
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="tasks-table table-wrapper">
+                  <% project.forEach(project =>{ %>
+                  <% if (project.tickets.length !== 0) { %>
+                    <table class="posts-table">
+                      <thead>
+                        <tr class="tasks-table-info">
+                         
+                          <th>Task</th>
+                          <th>Opened</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       
+                          <% project.tickets.forEach(ticket =>{ %>
+                        <tr>
+                         
+                          <td>
+                            <div class="d-flex flex-column">
+                            <div class="d-flex align-items-center">
+                            <p class="task-name bold ticketName" ><a href="/projects/<%= ticket.projectId %>/<%= ticket._id %>"><%= ticket.title %></a></p>
+                            <p class="description" ><%= ticket.description %></p>
+            
+                              <div class="btn-group dropright">
+                                <% if(ticket.type){ %>
+                                <span class="priority" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <%= ticket.type %>
+                                </span>
+                                <% } %>
+                    
+                                <div class="dropdown-menu">
+                                  <ul>
+                                    <% ticket.labels.forEach(label =>{ %>
+                                    <li> <a class= "add-label" href="" data-id="<%= ticket._id %>" data-label="<%= label %>"><%= label %></a></li>
+                                    <% })%>
+                                  </ul>
+                                  <form action="/projects/<%= id %>/<%= ticket._id %>/add-label" method="POST" autocomplete="off">
+                                    <input type="text" placeholder="add a label" name="label">
+                                  </form>
+                             
+                                </div>
+                              </div>
+                            
+                            </div>
+                      
+                            <div>
+                              <p class="description"><%= ticket.description %></p>
+                            </div>
+                         
+                          </div>
+                          </td>
+                          
+                          <td><%= moment(ticket.created).format('MMMM D YYYY') %></td>
+    
+                          <td>
+                            <div>
+                           
+                            <span class="p-relative">
+                              <button class="dropdown-btn transparent-btn" type="button" title="More info">
+                                <div class="sr-only">More info</div>
+                                <i data-feather="more-horizontal" aria-hidden="true"></i>
+                              </button>
+                             
+                              <ul class="tasks-item-dropdown dropdown">
+                                <li> <a href="/projects/<%=ticket.projectId%>/<%=ticket._id%>" >Open in Workspace</a></li>
+                                <li><a class="add-btn" href="/projects/<%=ticket.projectId%>/edit-ticket/<%=ticket._id%>" data-toggle="modal" data-target="#Modal<%= ticket._id %>">Edit</a></li>
+                                <li><a href="/projects/<%=ticket.projectId%>/delete-ticket/<%=ticket._id%>" onclick="return confirm('Are you sure you want to delete this task?')">Delete</a></li>
+                              </ul>
+                              
+                              <div class="modal fade" id="Modal<%= ticket._id %>">
+                                <div class="modal-dialog modal-lg">
+                                  <div class="modal-content modal-style">
+                                    <form class="edit-ticket" method="put" data-ticketid="<%=ticket._id%>" data-projectId="<%=ticket.projectId%>">
+                                      <div class="form-group mb-4 editForm">
+                                        <input type="text" class="form-control" name="title" value="<%= ticket.title %>" placeholder="Task">
+                                    </div>
+                                    <div class="d-flex form-group">
+                  
+                                      <input type="radio" name="type" class="bug" id="bug<%= ticket._id %>" value="bug"/>
+                                      <label class="task-type" for="bug<%= ticket._id %>">bug</label>
+                                      <input type="radio" name="type" class="improvement" id="imp<%= ticket._id %>" value="improvement"/>
+                                      <label for="imp<%= ticket._id %>" class="task-type">improvement</label>
+                                  
+                                      
+                                    </div>
+                              
+                                
+                                    
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                  </form>
+                                    </div>
+                                    
+                                    
+                                  </div>
+                                </div>
+                              
+                            </span>
+                          </div>
+                          </td>
+                   
+                        </tr>
+                      
+                        <% }) %>
+                      
+                      </tbody>
+                    </table>
+                    <% } else {%>
+                      <section class="d-flex mt-4">
+                  <div class="empty">
+                    <div><h2>Add a task</h2></div>
+                    <div class="arrow"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                      width="373.964px" height="373.964px" viewBox="0 0 373.964 373.964" style="enable-background:new 0 0 373.964 373.964;"
+                      xml:space="preserve">
+                   <g>
+                     <path d="M320.66,112.236c-11.627-22.032-25.092-44.064-38.555-64.872C275.373,36.96,265.58,18.601,253.339,9.42
+                       c0.613-1.224,0-2.448-0.611-3.672c-4.283-6.12-12.852-5.508-20.195-5.508c-10.404-0.612-20.809,0-31.213,1.224
+                       c-3.061,0.612-4.283,3.06-3.672,5.508c-22.644,29.988-44.676,61.812-60.588,96.084c-1.224,2.448-0.612,4.284,0.612,6.12
+                       c4.896,7.956,14.076,13.464,17.748,21.42c1.224,3.672,4.284,5.508,7.956,4.284c6.732-1.224,16.524-1.224,25.092-3.672
+                       c1.225,33.66,4.896,66.708,3.061,100.368c-1.225,18.36-6.121,51.408-22.645,66.708c-4.284-2.448-9.18-4.284-13.464-7.956
+                       c-6.732-5.508-7.344-14.688-7.956-22.644c0-3.672-2.448-6.12-6.12-6.12c-6.12,0-11.628-2.448-17.136-3.672
+                       c-3.06-0.612-6.12-1.836-9.18-2.448l0,0c0.612-3.672-1.836-7.344-6.12-7.344c-15.3,0.611-31.212,0.611-46.512,1.836
+                       c-2.448,0-3.672,1.836-4.284,3.06c-3.06-1.224-7.344,0.612-7.956,4.896C42.2,323.376,105.848,383.353,167.048,370.5
+                       c42.84,17.137,80.784-33.048,94.249-68.544c11.016-29.987,13.463-63.036,15.912-94.248c1.223-23.868,4.896-52.02,1.836-76.5
+                       c14.076,0,27.539-3.06,41.004-6.12C326.167,123.252,325.556,114.685,320.66,112.236z M187.857,116.521
+                       c-2.449,0.612-5.509,1.224-7.957,1.836c-5.508,0.612-11.016,1.224-16.524,3.06c-3.06-3.06-6.12-6.12-9.18-8.568
+                       c5.508-0.612,11.628-1.836,15.912-2.448c5.508-0.612,12.852-1.224,17.749-3.672C187.857,109.176,187.857,112.849,187.857,116.521z
+                        M135.836,273.193c1.224,13.464,7.956,26.316,19.584,33.048c-1.224,0.612-2.448,0.612-4.284,0.612
+                       c-19.584,2.448-31.824-22.645-36.72-41.004C120.536,270.133,129.104,271.969,135.836,273.193z M121.76,352.752
+                       c-40.392-12.239-59.364-55.079-61.2-94.248c0.612,0,0.612,0,1.224,0c14.076,1.837,28.764,1.837,42.84,1.837
+                       c3.672,39.168,39.168,83.231,75.888,44.063c19.583-21.42,23.869-55.08,25.093-82.62c2.447-39.78-1.225-81.396-4.285-121.176
+                       c-0.611-5.508-6.119-7.344-9.791-5.508c-6.733-5.508-17.749-1.836-25.705-0.612c-3.672,0.612-8.568,0.612-12.852,1.224
+                       c15.912-26.928,33.66-52.632,52.633-77.724c12.852,12.852,23.867,26.928,34.883,41.616c7.957,11.016,14.076,24.48,23.256,34.884
+                       c-7.344,0-14.688,0.612-22.031,1.224c-3.061-1.836-6.732-1.224-8.568,1.224c-3.061,1.224-3.672,5.508-1.225,7.956
+                       c3.672,64.872,12.854,134.64-8.566,197.064C208.664,343.573,163.376,365.605,121.76,352.752z M275.984,118.356
+                       c-2.447-3.672-9.18-3.672-10.404,1.224c-4.283,19.584-1.223,42.228-1.836,62.424c-0.611,29.376-3.059,58.141-8.568,86.904
+                       c-4.895,24.48-12.852,49.572-28.764,69.156c-9.18,11.016-18.971,15.3-29.988,18.36c1.225-0.612,1.836-1.225,3.061-2.448
+                       c69.768-54.468,50.184-168.301,44.676-246.637c6.121,0.612,12.852,0.612,18.973,0.612c5.508,0,18.359,2.448,18.359-6.732
+                       c0-3.672-2.447-5.508-6.119-6.12c0-0.612,0-1.224,0-1.836c-2.449-14.688-15.912-28.764-24.48-39.78
+                       c-11.016-14.688-22.645-29.988-35.496-42.84c3.672,0,7.344,0.612,10.404,0.612s7.344,1.224,11.016,2.448
+                       c3.061,4.896,7.344,9.18,11.016,14.076c8.568,10.404,16.525,21.42,23.869,33.048c12.24,17.748,23.867,36.108,37.943,52.632
+                       C299.853,115.296,288.224,117.744,275.984,118.356z"/>
+                       </g>
+                   
+                   </svg></div>
+                  </div>    
+                  
+                      </section>
+                      <% } %>
+                      <% }) %>
+                  </div>
+                </div>
+        </div>
+        <footer class="footer">
+          <div class="container footer--flex">
+            <div class="footer-start">
+              <p>2022 © Workspace</p>
+            </div>
+            <ul class="footer-end">
+              <li><a href="##">About</a></li>
+              <li><a href="##">Support</a></li>
+          
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </main>
+    <!-- ! Footer -->
+   
+  </div>
+
+  <%- include('../layout/footer.html'); %>

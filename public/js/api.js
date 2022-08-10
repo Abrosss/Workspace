@@ -14,17 +14,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(this);
         const entries = formData.entries();
         const data = Object.fromEntries(entries);
-        console.log(data)
-        // send out to a REST API
-        fetch(`https://workspace-bugtracker-api.herokuapp.com/projects/${projectId}`, {
-          method: "PUT",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json"
+     
+        const req = new XMLHttpRequest()
+        req.open('PUT', `http://localhost:5000/projects/${projectId}`)
+        req.setRequestHeader('Content-Type', 'application/json')
+        req.addEventListener('load', function() {
+          if(req.status === 200 && req.readyState === 4) {
+            location.reload()
+          } else {
+            throw new Error ('Bad request')
           }
         })
-          .then(window.location.reload())
-          .catch(error => console.log(error));
+        req.send(JSON.stringify(data))
       });
     })
 
@@ -37,23 +38,27 @@ document.addEventListener('DOMContentLoaded', function () {
     (function () {
       const form = document.querySelectorAll('.edit-ticket')
       form.forEach(form=>{
+        const projectId = form.dataset.projectId
         const ticketId = form.dataset.ticketid
         form.addEventListener("submit", function(event) {
           event.preventDefault();
           const formData = new FormData(this);
           const entries = formData.entries();
           const data = Object.fromEntries(entries);
-          console.log(data)
           // send out to a REST API
-          fetch(`https://workspace-bugtracker-api.herokuapp.com/tickets/${ticketId}`, {
-            method: "PUT",
-            body: JSON.stringify(data),
-            headers: {
-              "Content-Type": "application/json"
+          const req = new XMLHttpRequest()
+          req.open('PUT', `http://localhost:5000/projects/${projectId}/edit-ticket/${ticketId}`)
+          req.setRequestHeader('Content-Type', 'application/json')
+          req.addEventListener('load', function() {
+            if(req.status === 200 && req.readyState === 4) {
+             
+              location.reload()
+            } else {
+              throw new Error ('Bad request')
             }
           })
-            .then(window.location.reload())
-            .catch(error => console.log(error));
+          req.send(JSON.stringify(data))
+          
         });
       })
  
@@ -65,3 +70,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
+

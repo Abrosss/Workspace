@@ -2718,8 +2718,14 @@
    letter-spacing: -0.4px;
    color: #b9b9b9;
  }
- 
- 
+ .workspace-note{
+  display: flex;
+  justify-content: center;
+ }
+ .workspace-note input{
+  width: 50%;
+  border: 1px black solid;
+ }
  /* DARKMODE */
  
  
@@ -3805,3 +3811,5 @@
      flex-direction: column;
    }
  }
+
+
