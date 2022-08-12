@@ -83,6 +83,7 @@ You have now created a pull request! It's going to be reviewed!
 
 
 ## TO-DO-LIST
+[ ] landing page
 - Individual issue <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a>
 - the bugtracker for TEAMS
 
