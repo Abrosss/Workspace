@@ -4,6 +4,7 @@
 **Project management tool, bugtracker** <br />
 status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements are going to be changed._) <br />
 
+
 :clipboard: updated project <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#to-do-list-desktop">todolist</a>
 
 ## Idea
