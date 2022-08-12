@@ -83,6 +83,15 @@ Here are the instructions on setting up the project locally.
 
 You have now created a pull request! It's going to be reviewed!
 
+## How to run a server
+
+   ```sh
+   node app.js
+   ```
+   In a browser:
+   ```sh
+   http://localhost:5000/
+   ```
 
 
 ## TO-DO-LIST (DESKTOP)
