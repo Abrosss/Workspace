@@ -1,17 +1,11 @@
-<<<<<<< HEAD
 # Workspace
-Project management tool, bugtracker
-status: IN DEVELOPMENT, draft stage. Design decisions, styling of elements are going to be changed.
-The project is being created for learning purposes, and it going to be upgraded every day
-
-=======
-# Workspace (NOT ACTIVE)
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white"> <img src = "https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
 
 **Project management tool, bugtracker** <br />
-
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">
-
 status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements are going to be changed._) <br />
+
+
+:clipboard: project <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#to-do-list-desktop">todolist</a>
 
 ## Idea
 The idea of the project is creating a _workspace_ environment for each task or issue in a project created by a user, that includes: 
@@ -30,8 +24,6 @@ This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a
 ## How to contribute
 If you have a suggestion that would make this project better or you want to practice and fix one of the <a href="https://github.com/Abrosss/Workspace/issues">issues</a>, please fork the repository and create a pull request.
 Any contributions you make are greatly appreciated! Thank you! <br />
-
-Note: _during production process the authentication system is not working, only one dev account is used by default, a connection to the database happens through API. Everything is set up, so it's easier to focus on bugtracker features and issues_ <br />
 
 Here are the instructions on setting up the project locally.
 
@@ -68,28 +60,42 @@ Here are the instructions on setting up the project locally.
    ```sh
    npm install
    ```
-9. Make changes to files.
-10. Track your changes.
+9. **To make backend changes create .env file and add** 
+   ```sh
+   DB_STRING = '<your_mongodb_database_string>'
+   ```
+10. Make changes to files.
+11. Track your changes.
    ```sh
    git add .
    ```
-11. Commit your changes.
+12. Commit your changes.
    ```sh
    git commit -m "<description_of_changes>"
    ```
-12. Push these changes in your branch to your fork
+13. Push these changes in your branch to your fork
    ```sh
    git push origin <your_branch_name>
    ```
-13. To create a pull request, return to your fork on GitHub, and refresh the page.Click on `compare and pull request`
-14. Add a title and description to your pull request explaining the changes you made.
-15. Click the green `Create pull request` button.
+14. To create a pull request, return to your fork on GitHub, and refresh the page.Click on `compare and pull request`
+15. Add a title and description to your pull request explaining the changes you made.
+16. Click the green `Create pull request` button.
 
 You have now created a pull request! It's going to be reviewed!
 
 
 
-## TO-DO-LIST
-- Individual issue <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a>
+## TO-DO-LIST (DESKTOP)
+- [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
+  - [ ] notes section
+  - [ ] bookmarked todolist section
+  - [ ] dynamic sidebar with projects
+- [ ] home (dashboard) page
+- [ ] landing page
+- [ ] account settings
+  - [ ] dark mode toggle
+  - [ ] change name, password
+- [ ] global search through projects
+
 - the bugtracker for TEAMS
->>>>>>> 11af5aa92fa1b6293efab17e8ee0b0377d05d039
+
