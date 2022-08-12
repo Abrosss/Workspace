@@ -82,7 +82,7 @@ You have now created a pull request! It's going to be reviewed!
 
 
 
-## TO-DO-LIST DESKTOP
+## TO-DO-LIST (DESKTOP)
 - [ ] landing page
 - [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
   - [ ] notes section
