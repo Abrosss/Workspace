@@ -82,8 +82,17 @@ You have now created a pull request! It's going to be reviewed!
 
 
 
-## TO-DO-LIST
-[ ] landing page
-- Individual issue <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a>
+## TO-DO-LIST DESKTOP
+- [ ] landing page
+- [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
+  - [ ] notes section
+  - [ ] bookmarked todolist section
+  - [ ] dynamic sidebar with projects
+- [ ] home (dashboard) page
+- [ ] account settings
+  - [ ] dark mode toggle
+  - [ ] change name, password
+- [ ] global search through projects
+
 - the bugtracker for TEAMS
 
