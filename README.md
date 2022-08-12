@@ -62,7 +62,7 @@ Here are the instructions on setting up the project locally.
    ```
 9. **To make backend changes create .env file and add** 
    ```sh
-   DB_STRING = '<your_database_string>'
+   DB_STRING = '<your_mongodb_database_string>'
    ```
 10. Make changes to files.
 11. Track your changes.
