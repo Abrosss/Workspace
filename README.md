@@ -4,8 +4,23 @@
 **Project management tool, bugtracker** <br />
 status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements are going to be changed._) <br />
 
+## :clipboard: project todolist
+- [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
+  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/5"> notes section (CSS)</a> 
+  - [ ] notes section (backend) 
+  - [ ] bookmarked todolist section
+  - [ ] dynamic sidebar with projects
+- [ ] home (dashboard) page
+  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window CSS+JS</a> 
+  - [ ] bookmarks window backend
+- [ ] global search through projects
+- [ ] landing page
+- [ ] account settings
+  - [ ] dark mode toggle
+  - [ ] change name, password
 
-:clipboard: project <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#to-do-list">todolist</a>
+
+- the bugtracker for TEAMS
 
 ## Idea
 The idea of the project is creating a _workspace_ environment for each task or issue in a project created by a user, that includes: 
@@ -94,20 +109,5 @@ You have now created a pull request! It's going to be reviewed!
    ```
 
 
-## TO-DO-LIST
-- [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
-  - [ ] notes section
-  - [ ] bookmarked todolist section
-  - [ ] dynamic sidebar with projects
-- [ ] home (dashboard) page
-  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window CSS+JS</a> 
-  - [ ] bookmarks window backend
-- [ ] global search through projects
-- [ ] landing page
-- [ ] account settings
-  - [ ] dark mode toggle
-  - [ ] change name, password
 
-
-- the bugtracker for TEAMS
 
