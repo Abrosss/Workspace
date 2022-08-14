@@ -12,7 +12,7 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
   - [ ] dynamic sidebar with projects
 - [ ] home (dashboard) page
   - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window CSS+JS</a> 
-  - [ ] bookmarks window backend
+  - [ ] bookmarks window (backend)
 - [ ] global search through projects
 - [ ] landing page
 - [ ] account settings
