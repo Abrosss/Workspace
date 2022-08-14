@@ -100,11 +100,12 @@ You have now created a pull request! It's going to be reviewed!
   - [ ] bookmarked todolist section
   - [ ] dynamic sidebar with projects
 - [ ] home (dashboard) page
+- [ ] global search through projects
 - [ ] landing page
 - [ ] account settings
   - [ ] dark mode toggle
   - [ ] change name, password
-- [ ] global search through projects
+
 
 - the bugtracker for TEAMS
 
