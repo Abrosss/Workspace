@@ -5,7 +5,7 @@
 status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements are going to be changed._) <br />
 
 
-:clipboard: project <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#to-do-list-desktop">todolist</a>
+:clipboard: project <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#to-do-list">todolist</a>
 
 ## Idea
 The idea of the project is creating a _workspace_ environment for each task or issue in a project created by a user, that includes: 
