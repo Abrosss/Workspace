@@ -496,6 +496,7 @@
  /* content section page settings */
  
  .container {
+  position: relative;
    width: 100%;
    height: 100%;
    padding-right: 1rem;
@@ -913,7 +914,32 @@
    width: 49px;
    height: 49px;
  }
+
+ .cross {
+  background-image: url(../img/svg/cross-close.svg);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+ }
+
+ .magnifying-glass {
+  background-image: url(../img/svg/magnifying-glass.svg);
+  width: 18px;
+  height: 18px;
+ }
+
+ .settings-dots {
+  background-image: url(../img/svg/dots-settings.svg);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+ }
  
+ .bookmark {
+  background-image: url(../img/svg/book.svg);
+  width: 20px;
+  height: 20px;
+ }
  .menu-toggle {
    background-image: url(../img/svg/Bulk/Menu-toggle-gray.svg);
    width: 24px;
@@ -1324,6 +1350,26 @@
    height: 40px;
    border-width: 0;
  }
+ .search-wrapper-bookmarks{
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+ }
+ .search-wrapper-bookmarks input {
+  width: 100%;
+  border-radius: 6px;
+  background-color: #eff0f6;
+  height: 40px;
+  border-width: 0;
+  padding: 1rem;
+}
+.search-wrapper-bookmarks span {
+  position: absolute;
+  right: .5rem;
+  vertical-align: middle;
+
+}
  
  .search-wrapper input::-webkit-input-placeholder {
    background-color: #eff0f6;
@@ -2230,8 +2276,11 @@
    margin-right: 5px;
  }
  
- 
+ .full-height{
+  height: 100%;
+ }
  .main {
+  position: relative;
   height: 80%;
    padding-top: 20px;
    padding-bottom: 20px;
@@ -2745,6 +2794,70 @@
   width: 50%;
   border: 1px black solid;
  }
+
+ #bookmarks {
+ 
+  position: absolute;
+  right: 0;
+  width: min-content;
+  min-width: 18rem ;
+  height: 100%;
+  border-radius: 15px 0px 0px 15px;
+  background-color: #fff;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#bookmarks-hidden {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  
+}
+#bookmarks-hidden.true {
+  display: flex;
+}
+.bookmarks-header{
+  display: flex;
+  justify-content: center;
+}
+.bookmarks-header h6{
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bookmark-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  gap: 1rem;
+ 
+
+}
+
+.bookmark-item p{
+  line-height: 1.5;
+  cursor: grab;
+}
+
+
+#bookmarks.hidden {
+  display: none;
+}
  /* DARKMODE */
  
  

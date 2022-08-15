@@ -203,4 +203,23 @@ document.addEventListener('DOMContentLoaded', function () {
 }
   })();
 
+//close bookmarks
+
+(function(){
+
+  const closeButtons = document.querySelectorAll('.close')
+  const bookmarks = document.querySelector('#bookmarks')
+  const bookmarksIcon = document.querySelector('#bookmarks-hidden')
+  closeButtons.forEach(button => button.addEventListener('click', close))
+  bookmarksIcon.addEventListener('click', open)
+  function close() {
+    bookmarks.classList.toggle('hidden')
+    bookmarksIcon.classList.toggle('true')
+  }
+  function open() {
+    bookmarks.classList.toggle('hidden')
+    bookmarksIcon.classList.toggle('true')
+  }
+  })();
+
 });

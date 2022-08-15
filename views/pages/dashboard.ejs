@@ -95,16 +95,47 @@
 </nav>
     <!-- ! Main -->
     <main class="main tasks" id="skip-target">
+      
       <div class="container">
-        <h2 class="main-title">Dashboard</h2>
-        <div class="row stat-cards">
-          
+        <section id="bookmarks">
+          <div class="bookmarks-header">
+            <h6>Bookmarks</h6>
+            <span class="close icon cross"></span>
+          </div>
+          <div class="search-wrapper-bookmarks">
+            
+            <input type="text" id="search" placeholder="Search" autocomplete="off">
+            <span class="icon magnifying-glass"></span>
+          </div>
+          <div>
+          <div class="bookmark-item">
+            <p>How to connect Mongoose to Node Js</p>
+            <span class="p-relative">
+            <span class="dropdown-btn icon settings-dots"></span>
+            <ul class="tasks-item-dropdown dropdown">
+                    
+              <li><a href="#">Edit</a></li>
+              <li><a href="#" onclick="return confirm('Are you sure you want to delete this project?')">Delete</a></li>
+            </ul>
+          </span>
+          </div>
+          <div class="bookmark-item">
+            <p>How to update a document in MongoDB</p>
+            <span class="p-relative">
+              <span class="dropdown-btn icon settings-dots"></span>
+              <ul class="tasks-item-dropdown dropdown">
+                      
+                <li><a href="#">Edit</a></li>
+                <li><a href="#" onclick="return confirm('Are you sure you want to delete this project?')">Delete</a></li>
+              </ul>
+            </span>
+          </div>
         </div>
-        <div class="row">
-       
+        </section>
+        <div id = "bookmarks-hidden">
+          <span class="icon bookmark"></span>
+        </div>
         
-        </div>
-       
       </div>
     </main>
     <!-- ! Footer -->
