@@ -15,7 +15,7 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
   - [ ] bookmarks window (backend)
 - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/8">global search through projects</a>
 - [ ] landing page
-- [ ] <a href ="https://github.com/Abrosss/Workspace/issues/7">account settings</a>
+- [ ] <a href ="https://github.com/Abrosss/Workspace/issues/7">account settings</a> (HTML/CSS)
   - [ ] dark mode toggle (javascript)
   - [ ] change name, password (backend)
 
