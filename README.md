@@ -4,8 +4,26 @@
 **Project management tool, bugtracker** <br />
 status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements are going to be changed._) <br />
 
+## :clipboard: project todolist
+- [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
+  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/5"> notes section</a> (HTML/CSS)
+  - [ ] notes section (backend) 
+  - [ ] bookmarked todolist section
+  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/6">dynamic sidebar with projects</a> (backend) 
+- [ ] home (dashboard) page
+  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window</a> (CSS+JS)
+  - [ ] bookmarks window (backend)
+- [ ] <a href ="https://github.com/Abrosss/Workspace/issues/8">global search through projects</a>
+- [ ] landing page
+- [ ] <a href ="https://github.com/Abrosss/Workspace/issues/7">account settings</a> (HTML/CSS)
+  - [ ] dark mode toggle (javascript)
+  - [ ] change name, password (backend)
 
-:clipboard: project <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#to-do-list-desktop">todolist</a>
+
+- the bugtracker for TEAMS
+
+## Test
+This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. Username: `workspace` Password: `workspace`. <br />
 
 ## Idea
 The idea of the project is creating a _workspace_ environment for each task or issue in a project created by a user, that includes: 
@@ -15,10 +33,6 @@ The idea of the project is creating a _workspace_ environment for each task or i
 In short:
 _Find a bug, Research, Fix, Save the process for similar tasks in future_ <br />
 Right now the functionality is limited to creating a project and tasks to it. Time to expand! :rocket:
-
-## Test
-This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. Username: `workspace` Password: `workspace`. <br />
-
 
 <!-- How to contribute -->
 ## How to contribute
@@ -94,17 +108,5 @@ You have now created a pull request! It's going to be reviewed!
    ```
 
 
-## TO-DO-LIST (DESKTOP)
-- [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
-  - [ ] notes section
-  - [ ] bookmarked todolist section
-  - [ ] dynamic sidebar with projects
-- [ ] home (dashboard) page
-- [ ] landing page
-- [ ] account settings
-  - [ ] dark mode toggle
-  - [ ] change name, password
-- [ ] global search through projects
 
-- the bugtracker for TEAMS
 
