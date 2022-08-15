@@ -70,6 +70,9 @@ Here are the instructions on setting up the project locally.
    ```sh
    git checkout -b <your_branch_name>
    ```
+   
+### Set up the environment
+
 8. **Install NPM packages**
    ```sh
    npm install
