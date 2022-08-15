@@ -13,7 +13,7 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
 - [ ] home (dashboard) page
   - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window CSS+JS</a> 
   - [ ] bookmarks window (backend)
-- [ ] global search through projects
+- [ ] <a href ="https://github.com/Abrosss/Workspace/issues/8">global search through projects</a>
 - [ ] landing page
 - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/7">account settings</a>
   - [ ] dark mode toggle (javascript)
