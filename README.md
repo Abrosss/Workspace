@@ -81,6 +81,9 @@ Here are the instructions on setting up the project locally.
    ```sh
    DB_STRING = '<your_mongodb_database_string>'
    ```
+   
+### Make changes and create a pull request
+
 10. Make changes to files.
 11. Track your changes.
    ```sh
