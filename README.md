@@ -15,9 +15,9 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
   - [ ] bookmarks window (backend)
 - [ ] global search through projects
 - [ ] landing page
-- [ ] account settings
-  - [ ] dark mode toggle
-  - [ ] change name, password
+- [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">account settings</a>
+  - [ ] dark mode toggle (javascript)
+  - [ ] change name, password (backend)
 
 
 - the bugtracker for TEAMS
