@@ -6,7 +6,7 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
 
 ## :clipboard: project todolist
 - [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
-  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/5"> notes section (CSS)</a> 
+  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/5"> notes section (HTML/CSS)</a> 
   - [ ] notes section (backend) 
   - [ ] bookmarked todolist section
   - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/6">dynamic sidebar with projects (backend)</a> 
