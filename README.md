@@ -11,7 +11,7 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
   - [ ] bookmarked todolist section
   - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/6">dynamic sidebar with projects</a> (backend) 
 - [ ] home (dashboard) page
-  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window</a> (CSS+JS)
+  - [x] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window</a> (CSS+JS)
   - [ ] bookmarks window (backend)
 - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/8">global search through projects</a>
 - [ ] landing page
