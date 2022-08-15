@@ -79,7 +79,7 @@ const app = express()
                 res.send('PROFILE WILL BE HERE SOON')
                 })
         app.get('/settings', (req, res) => {
-                res.send('PAGE FOR USER SETTINGS')
+                res.render('settings')
                     })
         app.get('/trash', (req, res) => {
                 res.send('TRASHY TRASH HERE')
