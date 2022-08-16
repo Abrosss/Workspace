@@ -5,18 +5,18 @@
 status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements are going to be changed._) <br />
 
 ## :clipboard: project todolist
-- [ ] <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
+- <a href="https://github.com/Abrosss/Workspace/blob/main/README.md#idea">workspace</a> page
   - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/5"> notes section</a> (HTML/CSS)
   - [ ] notes section (backend) 
   - [ ] bookmarked todolist section
   - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/6">dynamic sidebar with projects</a> (backend) 
-- [ ] home (dashboard) page
-  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window</a> (CSS+JS)
+- home (dashboard) page
+  - [x] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window</a> (CSS+JS)
   - [ ] bookmarks window (backend)
 - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/8">global search through projects</a>
 - [ ] landing page
-- [ ] <a href ="https://github.com/Abrosss/Workspace/issues/7">account settings</a> (HTML/CSS)
-  - [ ] dark mode toggle (javascript)
+- account settings
+  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/7">HTML/CSS/JS</a>
   - [ ] change name, password (backend)
 
 
