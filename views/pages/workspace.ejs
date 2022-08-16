@@ -95,7 +95,40 @@
     <!-- ! Main -->
     <main class="main tasks" id="skip-target">
       <div class="container">
-        <section id="bookmarks" class="workspace">
+        <section class="row full-height">
+          <section class="notes-section">
+            <div class="notes-header">
+              <div class="note-name">
+              <span class="badge-success badge-task">TASK</span>
+              <h2>Connect to Mongoose</h2>
+            </div>
+            <p>from <span class="italic underline">E-commerce website</p>
+              <div class="note-input mt-5">
+              <form action="" method="POST" autocomplete="off">
+                <input type="text" placeholder="enter task.." name="note">
+              </form>
+            </div>
+            </div>
+            <div class="notes-container">
+              <div class="note-item col-2">
+                <p>https://www.youtube.com/watch?v=Nmv2-oSQyWE
+                </p>
+              </div>
+              <div class="note-item col-2">
+                <p>how to create schemas?</p>
+              </div>
+              <div class="note-item col-2">
+                <p>Read about mongoose here
+                  https://zellwk.com/blog/mongoose/</p>
+              </div>
+            </div>
+            <div class="mark-button">
+              <a class="btn btn-success" href="#">MARK COMPLETED</a>
+            </div>
+          </section>
+          
+        </section>
+        <section id="bookmarks" class="workspace hidden">
           <div class="bookmarks-body">
           <div class="bookmarks-header justify-content-end">
             <span class="close icon cross"></span>
@@ -104,24 +137,25 @@
             <h6 class="workspace">How to connect Mongoose to Node Js</h6>
           </div>
         
-          <div>
-          <div class="bookmark-item">
+          <div class="bookmarks-container">
+          <div class="bookmark-item workspace">
             <span class="icon circle"></span>
-            <p>How to connect Mongoose to Node Js</p>
+            <p>npm install</p>
             
           </div>
-          <div class="bookmark-item">
+          <div class="bookmark-item workspace">
             <span class="icon circle"></span>
-            <p>How to update a document in MongoDB</p>
+            <p>connect to database</p>
             
           </div>
+         
         </div>
       </div>
         <div class="save-button">
           <a class="btn btn-success" href="#">SAVE TO DASHBOARD</a>
         </div>
         </section>
-        <div id = "bookmarks-hidden">
+        <div id = "bookmarks-hidden" class="true">
           <span class="icon bookmark"></span>
         </div>
        

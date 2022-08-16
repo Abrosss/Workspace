@@ -1618,8 +1618,8 @@
  }
  
  .badge-success {
-   color: #4bde97;
-   background-color: rgba(75, 222, 151, 0.1);
+  color: #fff;
+   background-color: rgba(75, 222, 151, 0.5);
  }
  
  input {
@@ -2371,7 +2371,13 @@
  .bold{
    font-weight: bold;
  }
+ .italic {
+  font-style: italic;
  
+ }
+ .underline {
+  text-decoration: underline;
+ }
  .py-6{
    padding-top: 5rem;
    padding-bottom: 5rem;
@@ -2679,6 +2685,7 @@
  #bookmarks {
  
   position: absolute;
+  top: 0;
   right: 0;
   width: min-content;
   min-width: 18rem ;
@@ -2699,6 +2706,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  overflow-y: auto;
 }
 #bookmarks-hidden {
   position: absolute;
@@ -2741,6 +2749,11 @@
   resize: none;
 }
 
+.bookmarks-container {
+  height: min-content;
+  overflow-y: auto;
+}
+
 .bookmark-item {
   display: flex;
   justify-content: space-between;
@@ -2749,15 +2762,26 @@
   padding-bottom: 1rem;
   padding-left: 1rem;
   gap: 1rem;
+  text-align: left;
  
-
 }
 
+.bookmark-item.workspace {
+  justify-content: flex-start;
+}
 .bookmark-item p{
   line-height: 1.5;
   cursor: grab;
 }
-
+.note-name {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.badge-task {
+  position: absolute;
+  left: -100px;
+}
 
 #bookmarks.hidden {
   display: none;
@@ -2768,6 +2792,62 @@
   width: 100%;
   display: flex;
   justify-content: center;
+}
+.mark-button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.notes-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.notes-header {
+  width: 100%;
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.notes-header h2 {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.note-input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.note-input input {
+  background-color: #fff;
+  min-width: 35rem;
+  padding-left: .5rem;
+}
+.notes-container {
+  overflow-y: auto;
+  width: 100%;
+  height: min-content;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.note-item {
+  background-color: #fff;
+  min-height: 10rem;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  word-wrap: break-word;
 }
  .darkmode {
    background-color: #11111d;
