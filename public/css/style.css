@@ -922,6 +922,12 @@
   cursor: pointer;
  }
 
+ .circle {
+  background-image: url(../img/svg/circle.svg);
+  width: 24px;
+  height: 24px;
+ }
+
  .magnifying-glass {
   background-image: url(../img/svg/magnifying-glass.svg);
   width: 18px;
@@ -2808,8 +2814,17 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  
 }
-
+#bookmarks.workspace {
+  justify-content: space-between;
+  
+}
+.bookmarks-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 #bookmarks-hidden {
   position: absolute;
   right: 0;
@@ -2835,6 +2850,20 @@
   font-weight: bold;
   margin-right: auto;
   margin-left: auto;
+  text-align: center;
+  line-height: 1.5;
+}
+.bookmarks-header .workspace {
+  padding-bottom: 1rem;
+  border-bottom: 1px black solid;
+}
+.bookmarks-header textarea{
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  line-height: 1.5;
+  resize: none;
 }
 
 .bookmark-item {
@@ -2860,7 +2889,11 @@
 }
  /* DARKMODE */
  
- 
+.save-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
  .darkmode {
    background-color: #11111d;
    /* Navigation */
