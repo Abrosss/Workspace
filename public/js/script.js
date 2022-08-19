@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// sidebar 
+// sidebar toggle
 
   (function () {
     var sidebar = document.querySelector('.sidebar'),
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             sidebar.classList.toggle('hidden');
-            catSubMenu.classList.remove('visible');
+        
           });
         }
       }
@@ -174,8 +174,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })();
 
-
-
 //focus on input after opening the modal
 
   (function(){
@@ -203,10 +201,11 @@ document.addEventListener('DOMContentLoaded', function () {
 }
   })();
 
-//close bookmarks
+//close bookmarks on the dashboard and workspace pages
 
 (function(){
-
+  const page = document.querySelector('.page-flex')
+  if(page.classList.contains('workspace-page') || page.classList.contains('dashboard-page')) {
   const closeButtons = document.querySelectorAll('.close')
   const bookmarks = document.querySelector('#bookmarks')
   const bookmarksIcon = document.querySelector('#bookmarks-hidden')
@@ -220,6 +219,199 @@ document.addEventListener('DOMContentLoaded', function () {
     bookmarks.classList.toggle('hidden')
     bookmarksIcon.classList.toggle('true')
   }
+}
   })();
 
-});
+//sidebar iteration through projects and tasks on the workspace page
+
+(function(){
+  const page = document.querySelector('.page-flex')
+  if(page.classList.contains('workspace-page')) {
+  const sidebarProjects = document.querySelectorAll('.project-item')
+  const backArrow = document.querySelector('.back-icon')
+  backArrow.addEventListener('click', showProjects)
+  sidebarProjects.forEach(project => project.addEventListener('click', showTasks) )
+  
+  function showProjects() {
+    document.querySelector('.sub-projects').style.left='0'
+    document.querySelector('.sub-projects').classList.toggle('hidden')
+    document.querySelector('.sub-tasks').style.left='1000px'
+    document.querySelector('.sub-tasks').classList.toggle('show')
+    document.querySelector('.sublist-sidebar-tickets').innerHTML=''
+  }
+
+  function showTasks(e) {
+        const projectId = e.target.dataset.id
+        const projectName = e.target.dataset.name
+        document.querySelector('.active-project').innerText =`${projectName}`
+        document.querySelector('.sub-tasks').style.left='0'
+        document.querySelector('.sub-tasks').classList.toggle('show')
+        document.querySelector('.sub-projects').style.left='-1000px'
+        document.querySelector('.sub-projects').classList.toggle('hidden')
+
+        //add tasks, if no tasks, display 'no tasks' 
+        const req = new XMLHttpRequest()
+        req.open('GET', `http://localhost:5000/api/tasks/${projectId}`, true)
+        req.onload = function() {
+          if(req.status==200) {
+            let tasks = JSON.parse(this.response)
+            if(tasks.length !== 0) {
+            tasks.forEach(task => {
+             
+              const li = document.createElement('li')
+              const a = document.createElement('a')
+              li.classList.add('sidebar-subitem')
+              li.classList.add('task-item')
+              a.innerText=task.title
+              a.href = `/projects/${projectId}/${task._id}`
+              li.appendChild(a)
+              document.querySelector('.sublist-sidebar-tickets').appendChild(li)
+              })
+    
+            }
+            else {
+            const p = document.createElement('p')
+            p.classList.add('italic')
+            p.style.opacity='.7'
+            p.innerText = 'no tasks'
+            document.querySelector('.sublist-sidebar-tickets').appendChild(p)
+            }
+          }
+            else console.log('lol')
+         
+      
+        
+          }
+          req.send()
+        }
+  }
+})() ;
+
+
+//get the updated data from database and insert it in the progress bar on the project page
+(function(){
+  const page = document.querySelector('.page-flex')
+  if(page.classList.contains('tasks-page')){
+  const url = window.location.href;
+  const urlSplit = url.split('/');
+  const projectId = urlSplit[urlSplit.length-1]
+  console.log(projectId)
+    const req = new XMLHttpRequest()
+
+    req.open('GET', `http://localhost:5000/api/projects/${projectId}`, true)
+    req.onload = function() {
+      if(req.status==200) {
+        
+        let project = JSON.parse(this.response)
+  
+        let progress =  document.querySelector('.progress-filled')
+        progress.style.flexBasis =`${project.progress}%`
+        document.querySelector('.percentage').innerHTML=`${project.progress} %`
+
+        //the math is here to update info, after adding/deleting a new task, probably needs to be optimized
+
+        const finish = 100
+        let tickets = project.tickets
+        let total = 0
+        let completed = 0
+        for (let i = 0; i<tickets.length;i++) {
+          total++
+          if(tickets[i].completed)
+          completed++
+        }
+        let oneTaskPercentage = finish/total
+        let completedPercentage = Math.round(oneTaskPercentage * completed) || 0
+        let left = finish - completedPercentage
+        let progressBar =  document.querySelector('.progress-filled')
+    
+        console.log(completedPercentage)
+        
+        document.querySelector('.percentage').innerHTML=`${completedPercentage} %`
+       progressBar.style.flexBasis =`${completedPercentage}%`
+        
+        }
+        else console.log('failed')
+     
+  
+    
+      }
+      req.send()
+    }
+})();
+
+
+//mark completed function in tasks
+
+(function(){
+  const buttons = document.querySelectorAll('.completed');
+  buttons.forEach(button => button.addEventListener('click', markCompleted));
+  //https://openjavascript.info/2022/01/03/using-fetch-to-make-get-post-put-and-delete-requests/#:~:text=Making%20a%20fetch%20POST%20or%20PUT%20request,-To%20make%20a&text=This%20is%20done%20by%20adding,we%20specify%20the%20content%20type.
+
+  //press the 'mark completed button', send 'completed:true' to database
+
+function markCompleted(e) {
+  const ticketId = e.target.dataset.ticketid;
+  const req = new XMLHttpRequest()
+  req.open('PUT', `http://localhost:5000/api/tasks/${ticketId}`)
+  req.setRequestHeader('Content-Type', 'application/json')
+  req.onload = function() {
+    if(req.status !== 200) {
+      throw new Error('failed')
+    }
+    }
+    req.send(JSON.stringify({completed:true}))
+    updateprogress()
+  }
+
+  //iterate through tasks, count completed tasks, find the progress percentage, display info 
+function updateprogress() {
+    const url = window.location.href;
+    const urlSplit = url.split('/');
+    const projectId = urlSplit[urlSplit.length-1]
+
+    const req = new XMLHttpRequest()
+    req.open('GET', `http://localhost:5000/api/projects/${projectId}`, true)
+    req.onload = function() {
+      if(req.status==200) {
+        let project = JSON.parse(this.response)
+        const finish = 100
+        let total = 0
+        let completed = 0
+        let tickets = project.tickets
+        for (let i = 0; i<tickets.length;i++) {
+          total++
+            if(tickets[i].completed)
+            completed++
+        }
+        let oneTaskPercentage = finish/total
+        let completedPercentage = Math.round(oneTaskPercentage * completed)
+        let left = finish - completedPercentage
+        let progress =  document.querySelector('.progress-filled')
+        document.querySelector('.percentage').innerHTML=`${completedPercentage} %`
+        progress.style.flexBasis =`${completedPercentage}%`
+
+        updateproject(completedPercentage)
+
+        }
+        else console.log('failed')
+      }
+      req.send()
+  }
+  //update project in the database with a 'progress percentage' so after refreshing the page, the progress bar stays updated
+function updateproject(progress) {
+    const url = window.location.href;
+    const urlSplit = url.split('/');
+    const projectId = urlSplit[urlSplit.length-1]
+    const req = new XMLHttpRequest()
+    req.open('PUT', `http://localhost:5000/api/projects/${projectId}`)
+    req.setRequestHeader('Content-Type', 'application/json')
+    req.onload = function() {
+      if(req.status !== 200) {
+        throw new Error('failed')
+      }
+    }
+      req.send(JSON.stringify({progress:`${progress}`}))
+  }
+
+})()
+})

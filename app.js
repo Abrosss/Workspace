@@ -88,12 +88,17 @@ const app = express()
 
             const projects = require('./routes/projects.js')
 
-    const users = require('./routes/users.js')
+            const users = require('./routes/users.js')
+
+            const api = require('./routes/api.js')
+
 
 
     app.use('/projects', projects)  //THIS IS MAIN
 
     app.use('/users', users)
+
+    app.use('/api', api)
 
             const PORT = process.env.PORT || 5000
 

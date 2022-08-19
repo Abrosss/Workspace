@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     
-  // edit project
+  // edit project PUT
   (function () {
     const form = document.querySelectorAll('.edit-form')
     form.forEach(form=>{
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
    
       }
     )();
-// edit ticket
+// edit ticket PUT
     (function () {
       const form = document.querySelectorAll('.edit-ticket')
       form.forEach(form=>{
@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
      
         }
       )();
-
 
 });
 

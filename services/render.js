@@ -23,11 +23,12 @@ exports.add_project = (req, res) =>{
   let title = req.body.title
   let description = req.body.description
   let user =req.user._id
-
+  let progress = 0
   let project = new Project({
     title: title,
     description : description,
-    user:user
+    user:user,
+    progress:progress
    })
    project.save(err =>{
     if(err) console.log(err)
@@ -44,7 +45,6 @@ exports.add_project = (req, res) =>{
      })
    })
 }
-
 exports.edit_project = (req, res) => {
 
   if(!req.body){
@@ -102,23 +102,27 @@ exports.tickets = (req, res) =>{
     let status = ''
     let id = req.params.id
     let userId = req.user._id
+    Project.find({user:userId})
+    .exec(function (err, projects) {
     Project.find({_id:id}).populate('tickets')
     .then(data =>{
       res.render('pages/tasks', {
+        projects:projects,
         project: data,
         userId: userId,
         title: title,
-      description: description,
-      type: type,
-      priority: priority,
-      status: status,
-      id: id
+        description: description,
+        type: type,
+        priority: priority,
+        status: status,
+        id: id
       })
       }
     )
     .catch(err=>{
       console.log(err)
     })   
+  })
 }
 
 exports.add_ticket = (req, res) => {
@@ -200,21 +204,23 @@ exports.workspace = (req, res) =>{
   let id = req.params.id
   let ticketId = req.params.ticketId
   let userId = req.user._id
-  Ticket.find({_id:ticketId}).populate('projectId')
-    .then(data =>{
-      console.log(data)
-      res.render('pages/workspace', {
-        ticket: data,
-        userId:userId,
-        id:id
-     
-      })
-    })
-    .catch(err=>{
-      console.log(err)
-    })
+  Project.find({user:userId}).populate('tickets') 
+    .exec(function (err, projects) {
+    Ticket.find({_id:ticketId}).populate('projectId').exec(function (err, ticket) {
+      if(err) console.log(err)
+        res.render('pages/workspace', {
+            projects : projects,
+            ticket : ticket,
+            ticketId:ticketId,
+            userId:userId,
+            id:id
+        });
+    });
+});
+}
+ 
+    
   
 
 
    
-}

@@ -1,5 +1,5 @@
 <%- include('../layout/header.html'); %>
-<div class="page-flex">
+<div class="page-flex workspace-page">
   <!-- ! Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-start">
@@ -18,20 +18,65 @@
             </button>
         </div>
         <div class="sidebar-body">
-            <ul class="sidebar-body-menu">
-                <li>
-                    <a href="/home"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
-                </li>
-                <li>
-                  <a class="active" href="/projects"><span class="icon document" aria-hidden="true"></span>Projects</a>
-                  <ul class="sublist-sidebar">
-                    <li><a href="#">Project 1</a></li>
-                    <li><a href="#">Project 2</a></li>
-                    <li><a href="#">Project 3</a></li>
-                  </ul>
-              </li>
-             
+      <ul class="sidebar-body-menu">
+        <div class="sub-projects hidden">
+        <li>
+          <a href="/home"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
+      </li>
+        <li>
+          
+              <span class="projects-sidebar-item opacity">
+              <div class="d-flex align-items-center">
+              <span class="icon document" aria-hidden="true"></span>
+              Projects
+              </div>
+              <a class="expand-link" href="/projects"><span class="icon expand" aria-hidden="true"></span></a>
+            </span>
+          
+          <ul class="sublist-sidebar">
+            <% projects.forEach(project =>{ %>
+            <li class="sidebar-subitem project-item" data-id="<%=project._id%>" data-name="<%=project.title%>">
+               <%=project.title%>
+                
+                <ul class="sublist-sidebar-tasks">
+                  <% project.tickets.forEach(ticket =>{ %>
+                  <li><a href="#"><%=ticket.title%></a></li>
+                  <% })%>
+                </ul>
+                <% })%>
+            </li>
+           
+        </ul>
+      </li>
+    </div>
+      <li class="sub-tasks show">
+        
+        <% projects.forEach(project =>{ %>
+          <% if (id == project._id) { %>
+        <a class="opacity"><div class="back-icon-container"><span class="icon arrow-left back-icon" aria-hidden="true"></span></div><span class="active-project"><%=project.title%></span></a>
+    
+          <ul class="sublist-sidebar-tickets">
+            
+            <% project.tickets.forEach(ticket =>{ %>
+              <% if (ticketId == ticket._id) { %>
+              <li class="sidebar-subitem task-item active center"><a href="/projects/<%=ticket.projectId%>/<%=ticket._id%>"><%=ticket.title%></a></li>
+              <% } else {%>
+                <li class="sidebar-subitem task-item center"><a href="/projects/<%=ticket.projectId%>/<%=ticket._id%>"><%=ticket.title%></a></li>
+                <% } %>
+              <% })%>
+           
+          </ul>
+          <% } %>
+          <% })%>
+      </li>
+     
+  </ul>
+    </li>
+              
             </ul>
+            
+              
+           
          
         </div>
     </div>
@@ -105,9 +150,12 @@
             <div class="notes-header">
               <div class="note-name">
               <span class="badge-success badge-task">TASK</span>
-              <h2>Connect to Mongoose</h2>
+              <% ticket.forEach(ticket =>{ %>
+              <h2><%=ticket.title%></h2>
+            
             </div>
-            <p>from <span class="italic underline">E-commerce website</p>
+            <p>from <a class="italic underline" href="/projects/<%=ticket.projectId._id%>"><%=ticket.projectId.title%></a></p>
+              <% })%>
               <div class="note-input mt-5">
               <form action="" method="POST" autocomplete="off">
                 <input type="text" placeholder="enter task.." name="note">

@@ -21,6 +21,9 @@ const TicketSchema = mongoose.Schema({
     status: {
         type:String
     },
+    completed: {
+        type:Boolean
+    },
     notes:{
         type:Array
     },
@@ -49,6 +52,9 @@ const ProjectSchema = mongoose.Schema({
     tickets: [{
         type:mongoose.Schema.Types.ObjectId, ref: 'Ticket'
     }],
+    progress: {
+        type:Number
+    },
     notes: {
         type:Array
     },
