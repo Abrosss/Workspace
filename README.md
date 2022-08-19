@@ -13,9 +13,10 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
 - home (dashboard) page
   - [x] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window</a> (CSS+JS)
   - [ ] bookmarks window (backend)
+  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/8">global search through projects</a>
 - projects page
   - [ ] multiple select and delete
-- [ ] <a href ="https://github.com/Abrosss/Workspace/issues/8">global search through projects</a>
+
 - [ ] landing page
 - account settings
   - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/7">HTML/CSS/JS</a>
