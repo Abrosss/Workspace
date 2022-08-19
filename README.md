@@ -9,7 +9,7 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
   - [x] <a href ="https://github.com/Abrosss/Workspace/issues/5"> notes section</a> (HTML/CSS)
   - [x] bookmarked todolist section
   - [ ] notes section (backend) 
-  - [ ] <a href ="https://github.com/Abrosss/Workspace/issues/6">dynamic sidebar with projects</a> (backend) 
+  - [x] <a href ="https://github.com/Abrosss/Workspace/issues/6">dynamic sidebar with projects</a> (backend) 
 - home (dashboard) page
   - [x] <a href ="https://github.com/Abrosss/Workspace/issues/4"> bookmarks window</a> (CSS+JS)
   - [ ] bookmarks window (backend)
