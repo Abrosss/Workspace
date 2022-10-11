@@ -6,6 +6,7 @@ exports.projects = (req, res) =>{
   let description = ''
   Project.find({user:userId}).populate({path:'user', select: 'username'})
   .then(data =>{
+    console.log(data)
     res.render('pages/projects', {
       projects: data,
       userId:userId,
@@ -20,15 +21,21 @@ exports.projects = (req, res) =>{
 }
 
 exports.add_project = (req, res) =>{
+  function getRandomColor() {
+    color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+    return color;
+  }
   let title = req.body.title
   let description = req.body.description
   let user =req.user._id
   let progress = 0
+  var randomColor = getRandomColor()
   let project = new Project({
     title: title,
     description : description,
     user:user,
-    progress:progress
+    progress:progress,
+    color: randomColor
    })
    project.save(err =>{
     if(err) console.log(err)
@@ -54,10 +61,12 @@ exports.edit_project = (req, res) => {
   }
     let title = req.body.title
     let description = req.body.description
+    let progress = req.body.progress
     const projectId = req.params.projectId
     let project = new Project({
       title: title,
-      description : description
+      description : description,
+      progress:progress
      })
      Project.findByIdAndUpdate(projectId, req.body,{useFindAndModify:false})
        .then(data =>{

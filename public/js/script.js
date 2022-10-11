@@ -182,7 +182,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('.addForm')
   const editform = document.querySelectorAll('.editForm')
   function focusInput(e){
-    if(e.target.dataset.button=='add')
+    console.log(form.querySelector('input'))
+    if(e.currentTarget.dataset.button=='add')
     setTimeout(() => {
 
         form.querySelector('input').focus()
@@ -199,6 +200,37 @@ document.addEventListener('DOMContentLoaded', function () {
       }, "500")
    }
 }
+  })();
+
+  (function() {
+    if( document.querySelector('.note-input')) {
+      const inputs = document.querySelectorAll('.note-input')
+      inputs.forEach(input => {
+        input.addEventListener('click', showMore)
+     
+      } )
+    document.querySelector('.main') .addEventListener('click', hideMore)
+      function showMore(e) {
+        if(e.target.classList.contains('form-control'))
+        document.querySelector('.input-info').classList.remove('hidden')
+  
+       
+      }
+    //   function hideMore(e) {
+        
+    //     e.stopPropagation()
+      
+    //     if (e.target.classList.contains('task-type') || e.target.classList.contains('form-control') || e.target.classList.contains('form-group') || e.target.classList.contains('bug') || e.target.classList.contains('improvement') || e.target.classList.contains('btn')){
+    //       document.querySelector('.input-info').classList.remove('hidden')
+    //     }
+    //     else {
+        
+    //       document.querySelector('.input-info').classList.add('hidden')
+    //     }
+    // }
+   
+    }
+   
   })();
 
 //close bookmarks on the dashboard and workspace pages
@@ -289,129 +321,136 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //get the updated data from database and insert it in the progress bar on the project page
-(function(){
-  const page = document.querySelector('.page-flex')
-  if(page.classList.contains('tasks-page')){
-  const url = window.location.href;
-  const urlSplit = url.split('/');
-  const projectId = urlSplit[urlSplit.length-1]
-  console.log(projectId)
-    const req = new XMLHttpRequest()
+// (function(){
+//   const page = document.querySelector('.page-flex')
+//   if(page.classList.contains('tasks-page')){
+//   const url = window.location.href;
+//   const urlSplit = url.split('/');
+//   const projectId = urlSplit[urlSplit.length-1]
+//   console.log(projectId)
+//     const req = new XMLHttpRequest()
 
-    req.open('GET', `http://localhost:5000/api/projects/${projectId}`, true)
-    req.onload = function() {
-      if(req.status==200) {
+//     req.open('GET', `http://localhost:5000/api/projects/${projectId}`, true)
+//     req.onload = function() {
+//       if(req.status==200) {
         
-        let project = JSON.parse(this.response)
-  
-        let progress =  document.querySelector('.progress-filled')
-        progress.style.flexBasis =`${project.progress}%`
-        document.querySelector('.percentage').innerHTML=`${project.progress} %`
+//         let project = JSON.parse(this.response)
+//   console.log(project.progress)
+//         let progress =  document.querySelector('.progress-filled')
+//         progress.style.flexBasis =`${project.progress}%`
+//         document.querySelector('.percentage').innerHTML=`${project.progress} %`
 
-        //the math is here to update info, after adding/deleting a new task, probably needs to be optimized
+//         //the math is here to update info, after adding/deleting a new task, probably needs to be optimized
 
-        const finish = 100
-        let tickets = project.tickets
-        let total = 0
-        let completed = 0
-        for (let i = 0; i<tickets.length;i++) {
-          total++
-          if(tickets[i].completed)
-          completed++
-        }
-        let oneTaskPercentage = finish/total
-        let completedPercentage = Math.round(oneTaskPercentage * completed) || 0
-        let left = finish - completedPercentage
-        let progressBar =  document.querySelector('.progress-filled')
+//         const finish = 100
+//         let tickets = project.tickets
+//         let total = 0
+//         let completed = 0
+//         for (let i = 0; i<tickets.length;i++) {
+//           total++
+//           if(tickets[i].completed)
+//           completed++
+//         }
+//         let oneTaskPercentage = finish/total
+//         let completedPercentage = Math.round(oneTaskPercentage * completed) || 0
+//         let left = finish - completedPercentage
+//         let progressBar =  document.querySelector('.progress-filled')
     
-        console.log(completedPercentage)
+   
         
-        document.querySelector('.percentage').innerHTML=`${completedPercentage} %`
-       progressBar.style.flexBasis =`${completedPercentage}%`
+//         document.querySelector('.percentage').innerHTML=`${completedPercentage} %`
+//       //  progressBar.style.flexBasis =`${completedPercentage}%`
         
-        }
-        else console.log('failed')
+//         }
+//         else console.log('failed')
      
   
     
-      }
-      req.send()
-    }
-})();
+//       }
+//       req.send()
+//     }
+// })();
 
 
 //mark completed function in tasks
 
-(function(){
-  const buttons = document.querySelectorAll('.completed');
-  buttons.forEach(button => button.addEventListener('click', markCompleted));
-  //https://openjavascript.info/2022/01/03/using-fetch-to-make-get-post-put-and-delete-requests/#:~:text=Making%20a%20fetch%20POST%20or%20PUT%20request,-To%20make%20a&text=This%20is%20done%20by%20adding,we%20specify%20the%20content%20type.
+// (function(){
+//   const buttons = document.querySelectorAll('.completed');
+//   buttons.forEach(button => button.addEventListener('click', markCompleted));
+//   //https://openjavascript.info/2022/01/03/using-fetch-to-make-get-post-put-and-delete-requests/#:~:text=Making%20a%20fetch%20POST%20or%20PUT%20request,-To%20make%20a&text=This%20is%20done%20by%20adding,we%20specify%20the%20content%20type.
 
-  //press the 'mark completed button', send 'completed:true' to database
+//   //press the 'mark completed button', send 'completed:true' to database
 
-function markCompleted(e) {
-  const ticketId = e.target.dataset.ticketid;
-  const req = new XMLHttpRequest()
-  req.open('PUT', `http://localhost:5000/api/tasks/${ticketId}`)
-  req.setRequestHeader('Content-Type', 'application/json')
-  req.onload = function() {
-    if(req.status !== 200) {
-      throw new Error('failed')
-    }
-    }
-    req.send(JSON.stringify({completed:true}))
-    updateprogress()
-  }
+// function markCompleted(e) {
+//   const ticketId = e.target.dataset.ticketid;
+//   const req = new XMLHttpRequest()
+//   req.open('PUT', `http://localhost:5000/api/tasks/${ticketId}`)
+//   req.setRequestHeader('Content-Type', 'application/json')
+//   req.onload = function() {
+//     if(req.status !== 200) {
+//       throw new Error('failed')
+//     }
+//     }
+//     req.send(JSON.stringify({completed:true}))
+//     updateprogress()
+//   }
 
-  //iterate through tasks, count completed tasks, find the progress percentage, display info 
-function updateprogress() {
-    const url = window.location.href;
-    const urlSplit = url.split('/');
-    const projectId = urlSplit[urlSplit.length-1]
+//   //iterate through tasks, count completed tasks, find the progress percentage, display info 
+// function updateprogress() {
+//     const url = window.location.href;
+//     const urlSplit = url.split('/');
+//     const projectId = urlSplit[urlSplit.length-1]
 
-    const req = new XMLHttpRequest()
-    req.open('GET', `http://localhost:5000/api/projects/${projectId}`, true)
-    req.onload = function() {
-      if(req.status==200) {
-        let project = JSON.parse(this.response)
-        const finish = 100
-        let total = 0
-        let completed = 0
-        let tickets = project.tickets
-        for (let i = 0; i<tickets.length;i++) {
-          total++
-            if(tickets[i].completed)
-            completed++
-        }
-        let oneTaskPercentage = finish/total
-        let completedPercentage = Math.round(oneTaskPercentage * completed)
-        let left = finish - completedPercentage
-        let progress =  document.querySelector('.progress-filled')
-        document.querySelector('.percentage').innerHTML=`${completedPercentage} %`
-        progress.style.flexBasis =`${completedPercentage}%`
+//     const req = new XMLHttpRequest()
+//     req.open('GET', `http://localhost:5000/api/projects/${projectId}`, true)
+//     req.onload = function() {
+//       if(req.status==200) {
+//         let project = JSON.parse(this.response)
+//         const finish = 100
+//         let total = 0
+//         let completed = 0
+//         let tickets = project.tickets
+//         for (let i = 0; i<tickets.length;i++) {
+//           total++
+//             if(tickets[i].completed)
+//             completed++
+//         }
+//         let oneTaskPercentage = finish/total
+//         let completedPercentage = Math.round(oneTaskPercentage * completed)
+//         let left = finish - completedPercentage
+//         let progress =  document.querySelector('.progress-filled')
+//         document.querySelector('.percentage').innerHTML=`${completedPercentage} %`
+//         // progress.style.flexBasis =`${completedPercentage}%`
 
-        updateproject(completedPercentage)
+//         updateproject(completedPercentage)
 
-        }
-        else console.log('failed')
-      }
-      req.send()
-  }
-  //update project in the database with a 'progress percentage' so after refreshing the page, the progress bar stays updated
-function updateproject(progress) {
-    const url = window.location.href;
-    const urlSplit = url.split('/');
-    const projectId = urlSplit[urlSplit.length-1]
-    const req = new XMLHttpRequest()
-    req.open('PUT', `http://localhost:5000/api/projects/${projectId}`)
-    req.setRequestHeader('Content-Type', 'application/json')
-    req.onload = function() {
-      if(req.status !== 200) {
-        throw new Error('failed')
-      }
-    }
-      req.send(JSON.stringify({progress:`${progress}`}))
-  }
+//         }
+//         else console.log('failed')
+//       }
+//       req.send()
+//   }
+//   //update project in the database with a 'progress percentage' so after refreshing the page, the progress bar stays updated
+// function updateproject(progress) {
+//   console.log(progress)
+//     const url = window.location.href;
+//     const urlSplit = url.split('/');
+//     const projectId = urlSplit[urlSplit.length-1]
+//     const req = new XMLHttpRequest()
+//     req.open('PUT', `http://localhost:5000/api/projects/${projectId}`)
+//     req.setRequestHeader('Content-Type', 'application/json')
+//     req.onload = function() {
+//       console.log(req.status)
+//       if(req.status === 200) {
+//         console.log('okok')
+//         req.send(JSON.stringify({progress:progress}))
+//       }
+      
+//       if(req.status !== 200) {
+//         throw new Error('failed')
+//       }
+//     }
+      
+//   }
 
-})()
+// })()
 })

@@ -19,10 +19,10 @@
         </div>
         <div class="sidebar-body">
             <ul class="sidebar-body-menu">
-                <li>
+                <li class="item">
                     <a href="/home" class="active"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
                 </li>
-                <li>
+                <li class="item">
                   <a href="/projects"><span class="icon document" aria-hidden="true"></span>Projects</a>
               </li>
               
@@ -75,14 +75,7 @@
             </span>
           </button>
           <ul class="tasks-item-dropdown nav-user-dropdown dropdown">
-            <li><a href="##">
-                <i data-feather="user" aria-hidden="true"></i>
-                <span>Profile</span>
-              </a></li>
-            <li><a href="/settings">
-                <i data-feather="settings" aria-hidden="true"></i>
-                <span>Account settings</span>
-              </a></li>
+            
             <li><a class="danger" href="/users/logout">
                 <i data-feather="log-out" aria-hidden="true"></i>
                 <span>Log out</span>
@@ -96,8 +89,10 @@
     <!-- ! Main -->
     <main class="main tasks" id="skip-target">
       
-      <div class="container">
-        <section id="bookmarks">
+      <div class="container dashboard-main">
+        
+        
+        <!-- <section id="bookmarks">
           <div class="bookmarks-header">
             <h6>Bookmarks</h6>
             <span class="close icon cross"></span>
@@ -134,8 +129,50 @@
         </section>
         <div id = "bookmarks-hidden">
           <span class="icon bookmark"></span>
+        </div> -->
+        <div class="col-10 dashboard-work">
+          <div class="search-wrapper-bookmarks dashboard">
+            
+            <input type="text" id="search" placeholder="Search" autocomplete="off">
+            <span class="icon magnifying-glass"></span>
+          </div>
+          <div>
+            <div class="bookmark-item">
+              <p>How to connect Mongoose to Node Js</p>
+              <span class="p-relative">
+              <span class="dropdown-btn icon settings-dots"></span>
+              <ul class="tasks-item-dropdown dropdown">
+                      
+                <li><a href="#">Edit</a></li>
+                <li><a href="#" onclick="return confirm('Are you sure you want to delete this project?')">Delete</a></li>
+              </ul>
+            </span>
+            </div>
+            <div class="bookmark-item">
+              <p>How to update a document in MongoDB</p>
+              <span class="p-relative">
+                <span class="dropdown-btn icon settings-dots"></span>
+                <ul class="tasks-item-dropdown dropdown">
+                        
+                  <li><a href="#">Edit</a></li>
+                  <li><a href="#" onclick="return confirm('Are you sure you want to delete this project?')">Delete</a></li>
+                </ul>
+              </span>
+            </div>
+            <div class="bookmark-item">
+              <p>How to do this</p>
+              <span class="p-relative">
+                <span class="dropdown-btn icon settings-dots"></span>
+                <ul class="tasks-item-dropdown dropdown">
+                        
+                  <li><a href="#">Edit</a></li>
+                  <li><a href="#" onclick="return confirm('Are you sure you want to delete this project?')">Delete</a></li>
+                </ul>
+              </span>
+            </div>
+            
+          </div>
         </div>
-        
       </div>
     </main>
     <!-- ! Footer -->

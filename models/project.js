@@ -58,6 +58,9 @@ const ProjectSchema = mongoose.Schema({
     notes: {
         type:Array
     },
+    color: {
+        type:String
+    },
     labels: {
         type:Array
     },
