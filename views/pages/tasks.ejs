@@ -105,7 +105,7 @@
       
           </div>
           <% if (project.tickets.length !== 0) { %>
-          <div class="note-input mt-5">
+          <div class="note-input mt-3">
             <form method="post" action="/projects/<%= id %>/add-ticket" autocomplete="off">
               <div class="form-group mb-2 addForm">
                 <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Add a task">

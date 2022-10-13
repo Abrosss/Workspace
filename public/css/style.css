@@ -1507,7 +1507,8 @@
    margin-bottom: 10px;
  }
  .subtitle {
-   font-size: 1rem;
+   font-size: .8rem;
+   text-align: center;
    line-height: 1.42;
    color: #807878;
    margin-bottom: 20px;
@@ -3440,7 +3441,8 @@ border: 1px white solid;
    .container {
      max-width: 540px;
    }
- 
+  
+  
    .col-sm {
      -ms-flex-preferred-size: 0;
      flex-basis: 0;
@@ -4183,7 +4185,12 @@ border: 1px white solid;
  }
  
  @media (max-width: 767.98px) {
-  
+  .priority {
+    display: none;
+   }
+   .list-title {
+    font-size: .8rem;
+   }
   .list--tasks {
     padding: 0;
    }
