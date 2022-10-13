@@ -2813,6 +2813,9 @@ justify-content: space-between;
  
   padding: 0 1rem;
  }
+ .list-content__title div {
+  display: flex;
+ }
  .list-content__title a:first-child {
   display: flex;
   align-items: center;
@@ -3159,7 +3162,7 @@ justify-content: space-between;
    height: 24px;
  }
  .darkmode .priority {
-   color: white;
+   color: black;
  }
  .darkmode .main.landing-page{
    background-color: #161624;
