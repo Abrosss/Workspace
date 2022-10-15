@@ -2777,7 +2777,6 @@
    overflow: auto;
  }
  .list-content {
-  z-index: 1000;
   min-height: 4rem;
    display: -webkit-box;
    display: -ms-flexbox;
@@ -2824,6 +2823,7 @@ justify-content: space-between;
   height: 100%;
   gap: .5rem;
   width: 100%;
+  z-index: 1000;
  }
  .list-content__progress {
   width: 50%;
@@ -2841,6 +2841,7 @@ justify-content: space-between;
    line-height: 1.2;
    letter-spacing: -0.4px;
    color: #171717;
+
  }
  .list-subtitle {
    font-size: 12px;
