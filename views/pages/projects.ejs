@@ -1,4 +1,6 @@
 <%- include('../layout/header.html'); %>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
 <div class="page-flex">
   <!-- ! Sidebar -->
   <aside class="sidebar">
@@ -90,7 +92,7 @@
                 
                 <ul class="list list--projects">
                   <% projects.forEach(project =>{ %>
-                  <li class="list-content" style="background-color:<%=project.color%> ;">
+                  <li id="id_<%=project._id%>" class="list-content" style="background-color:<%=project.color%> ;">
                     
                     <div class="list-content__title">
                       <a href="/projects/<%=project._id%>">
@@ -211,4 +213,21 @@
    
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+<script>
+  $('.list--projects').sortable({
+
+    items: ".list-content",
+    placeholder: 'ui-state-highlight',
+    update: function() {
+      let ids =  $('.list--projects').sortable("serialize");
+      let url = "/projects/reorder-project";
+
+      $.post(url, ids)
+    }
+  })
+  $(".list--projects").disableSelection();
+</script>
   <%- include('../layout/footer.html'); %>
