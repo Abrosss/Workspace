@@ -2777,6 +2777,7 @@
    overflow: auto;
  }
  .list-content {
+  z-index: 1000;
   min-height: 4rem;
    display: -webkit-box;
    display: -ms-flexbox;
