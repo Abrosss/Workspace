@@ -134,7 +134,7 @@
               
               <ul class="list list--tasks">
                 <% project.tickets.forEach(ticket =>{ %>
-                <li class="list-content list-content--task">
+                <li id="id_<%= ticket._id %>" class="list-content list-content--task">
            
                   <div class="list-content__title">
                     <div>
@@ -240,16 +240,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script>
-    $('.list--tasks').sortable({
-      items: "li",
-      axis: 'y',
-      placeholder: 'ui-state-highlight',
-      update: function() {
-        let ids =  $('.list--tasks').sortable("serialize");
-        let url = "/projects/reorder-project";
-  
-        $.post(url, ids)
-      }
-    })
+
   </script>
   <%- include('../layout/footer.html'); %>
