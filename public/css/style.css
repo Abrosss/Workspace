@@ -2816,6 +2816,11 @@ justify-content: space-between;
  }
  .list-content__title div {
   display: flex;
+  align-items: center;
+  gap: 1rem;
+ }
+ .handle {
+  cursor: grab;
  }
  .list-content__title a:first-child {
   display: flex;
