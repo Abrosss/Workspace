@@ -64,7 +64,10 @@ const ProjectSchema = mongoose.Schema({
     labels: {
         type:Array
     },
-    created: { type: Date, default: Date.now }
+    created: { type: Date, default: Date.now },
+    sorting: {
+        type:Number
+    }
     
 })
 const UserdataSchema = mongoose.Schema({

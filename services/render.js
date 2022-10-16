@@ -4,9 +4,9 @@ exports.projects = (req, res) =>{
   let userId = req.user._id
   let title = ''
   let description = ''
-  Project.find({user:userId}).populate({path:'user', select: 'username'})
+  Project.find({user:userId}).populate({path:'user', select: 'username'}).sort({ sorting: 1 })
   .then(data =>{
-    console.log(data)
+   
     res.render('pages/projects', {
       projects: data,
       userId:userId,
@@ -21,36 +21,59 @@ exports.projects = (req, res) =>{
 }
 
 exports.add_project = (req, res) =>{
+
   function getRandomColor() {
     color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
     return color;
   }
+
+
   let title = req.body.title
   let description = req.body.description
   let user =req.user._id
   let progress = 0
   var randomColor = getRandomColor()
-  let project = new Project({
-    title: title,
-    description : description,
-    user:user,
-    progress:progress,
-    color: randomColor
-   })
-   project.save(err =>{
-    if(err) console.log(err)
-    
-   })
-   //add project ID to user data
-   Userdata.findOne({user:user}, (err, data)=>{
-    if(err) return console.log(err)
-    
-    data.projects.push(project._id)
-    data.save(err =>{
-      if(err) console.log(err)
-      res.redirect('/projects')
+
+  Project.countDocuments({user:user}, function( err, count){
+    let project = new Project({
+      title: title,
+      description : description,
+      user:user,
+      progress:progress,
+      color: randomColor,
+      sorting: count - 1
      })
-   })
+     project.save(err =>{
+      if(err) console.log(err)
+      
+     })
+     //add project ID to user data
+     Userdata.findOne({user:user}, (err, data)=>{
+      if(err) return console.log(err)
+      
+      data.projects.push(project._id)
+      data.save(err =>{
+        if(err) console.log(err)
+        res.redirect('/projects')
+       })
+     })
+})
+
+}
+exports.reorder_project = (req, res) =>{
+let ids = req.body['id']
+ids.forEach((id, index)=>{
+
+  (function(index) {
+Project.findById(id, function(err, project) {
+  project.sorting = index
+  project.save(function(err) {
+    if(err) return console.log(err)
+  })
+})
+  })(index)
+})
+
 }
 exports.edit_project = (req, res) => {
 
