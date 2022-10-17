@@ -65,6 +65,7 @@ let ids = req.body['id']
 ids.forEach((id, index)=>{
 
   (function(index) {
+    console.log(`id: ${id}, index: ${index}`)
 Project.findById(id, function(err, project) {
   project.sorting = index
   project.save(function(err) {
