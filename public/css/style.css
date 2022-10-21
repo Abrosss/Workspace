@@ -3410,7 +3410,7 @@ header {
  }
  .darkmode .sidebar-subitem.active a{
   background-color: rgba(176, 176, 176, 0.1);
-  color: white;
+  color: black;
   opacity: 1;
  }
  .darkmode .sidebar-subitem{
