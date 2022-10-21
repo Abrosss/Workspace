@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const data = Object.fromEntries(entries);
      
         const req = new XMLHttpRequest()
-        req.open('PUT', `http://localhost:5000/projects/${projectId}`)
+        req.open('PUT', `/projects/${projectId}`)
         req.setRequestHeader('Content-Type', 'application/json')
         req.addEventListener('load', function() {
           if(req.status === 200 && req.readyState === 4) {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
           console.log(data)
           // send out to a REST API
           const req = new XMLHttpRequest()
-          req.open('PUT', `http://localhost:5000/api/${ticketId}`)
+          req.open('PUT', `/api/${ticketId}`)
           req.setRequestHeader('Content-Type', 'application/json')
           req.addEventListener('load', function() {
             if(req.status === 200 && req.readyState === 4) {
