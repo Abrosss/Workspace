@@ -94,13 +94,17 @@
     <!-- ! Main -->
     <main class="main tasks" id="skip-target">
       <div class="container">
-        <div class="subheader">
-         
-          <div class="project-header">
         <% project.forEach(project =>{ %>
+        <div class="subheader" >
+         
+          <div class="project-header" style="background-color:<%= project.color %>">
       
-            <h2 class="main-title"><strong><%= project.title %></strong></h2>
-            <p class="subtitle"><%= project.description%></p>
+      <div class="main-title" ">
+            <h2 class="main-title__text" ><%= project.title %></h2></div>
+            <% if (project.description) { %>
+              <p class="subtitle"><%= project.description%></p>
+            <% } %>
+            
             <p class="small-text"><%= project.tickets.length%> tasks</p>
       
           </div>
@@ -194,7 +198,7 @@
                 
                   
                       
-                      <button type="submit" class="btn btn-dark">Submit</button>
+                      <button type="submit"  class="btn btn-dark btn-edit">Submit</button>
                     </form>
                       </div>
                       

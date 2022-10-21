@@ -45,9 +45,10 @@ document.addEventListener('DOMContentLoaded', function () {
           const formData = new FormData(this);
           const entries = formData.entries();
           const data = Object.fromEntries(entries);
+          console.log(data)
           // send out to a REST API
           const req = new XMLHttpRequest()
-          req.open('PUT', `http://localhost:5000/projects/${projectId}/edit-ticket/${ticketId}`)
+          req.open('PUT', `http://localhost:5000/api/${ticketId}`)
           req.setRequestHeader('Content-Type', 'application/json')
           req.addEventListener('load', function() {
             if(req.status === 200 && req.readyState === 4) {

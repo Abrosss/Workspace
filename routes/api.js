@@ -92,5 +92,33 @@ router.put('/projects/:id', (req, res) => {
         res.status(500).send({message:'error update user info'})
        })
 })
+router.put('/:ticketId', (req, res) => {
+  let title = req.body.title
+  let description = req.body.description
+  let type = req.body.type
+  let priority = req.body.priority
+  let status = req.body.status
+  let ticketId = req.params.ticketId
 
+ let ticket = new Ticket({
+  title:title,
+  description : description,
+  type:type,
+  priority:priority,
+  status:status
+ })
+
+ Ticket.findByIdAndUpdate(ticketId, req.body,{useFindAndModify:false})
+ .then(data =>{
+  if(!data){
+    res.status(404).send({message: 'cannot update'})
+  } else{
+    res.send('a ticket has been updated')
+  }
+ })
+ .catch(err =>{
+  res.status(500).send({message:'error update user info'})
+ })
+
+})
 module.exports = router

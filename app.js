@@ -47,11 +47,11 @@ const app = express()
 
         app.get('/', (req, res) => {
            
-            res.render('login', {
+            res.render('pages/landingpage', {
                 error: req.flash("error")
             })
             })
-        app.get('/register', (req, res) => {
+        app.get('/signup', (req, res) => {
                 res.render('register', {
                   title:'Register',
                   error:req.flash("error")

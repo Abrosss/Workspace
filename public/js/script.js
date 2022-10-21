@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
         input.addEventListener('click', showMore)
      
       } )
-    document.querySelector('.main') .addEventListener('click', hideMore)
+
       function showMore(e) {
         if(e.target.classList.contains('form-control'))
         document.querySelector('.input-info').classList.remove('hidden')
