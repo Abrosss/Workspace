@@ -2818,11 +2818,10 @@
    align-items: center;
    background-color: #fff;
 justify-content: space-between;
-  
-   flex: 10;
+
   width: 100%;
   position: relative;
-  flex-basis: 100%;
+
   transition: height 0.3s;
   
  }
@@ -4410,6 +4409,12 @@ border: 1px white solid;
  }
  
  @media (max-width: 1199.98px) {
+  .list--projects {
+    padding: 0
+   }
+   .list-issues__description {
+    margin-bottom: 0;
+   }
    .sidebar {
      position: fixed;
      z-index: 12;
