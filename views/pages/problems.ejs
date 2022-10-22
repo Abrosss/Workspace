@@ -1,0 +1,242 @@
+<%- include('../layout/header.html'); %>
+<div class="page-flex tasks-page">
+  <!-- ! Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-start">
+        <div class="sidebar-head">
+            <a href="/projects" class="logo-wrapper" title="Home">
+                <span class="sr-only">Home</span>
+                <div class="logo-text">
+                  <span class="logo-title">Workspace</span>
+                  <span class="logo-subtitle">Fix & Learn</span>
+              </div>
+
+            </a>
+            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                <span class="sr-only">Toggle menu</span>
+                <span class="icon menu-toggle" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="sidebar-body">
+            <ul class="sidebar-body-menu">
+                
+                <li class=" sub-projects">
+                  <a class="item" href="/projects">
+            
+                    <span class="icon document" aria-hidden="true"></span>
+                    Projects
+                
+                    </a>
+                  </span>
+              
+              <ul class="sublist-sidebar">
+                <% projects.forEach(project =>{ %>
+                  <% if (id == project._id) { %>
+                <li class="sidebar-subitem active" style="background-color: <%= project.color%> ;" data-id="<%=project._id%>" data-name="<%=project.title%>">
+                  <a class href="/projects/<%=project._id%>">
+                   <%=project.title.toUpperCase()%></a>
+                
+                </li>
+                <% } else {%>
+                  <li class="sidebar-subitem" data-id="<%=project._id%>" data-name="<%=project.title%>">
+                    <a class href="/projects/<%=project._id%>">
+                     <%=project.title.toUpperCase()%></a>
+                   
+                  </li>
+                  <% }%>
+                  <% })%>
+            </ul>
+          </li>
+             
+            </ul>
+         
+        </div>
+    </div>
+   
+</aside>
+  <div class="main-wrapper">
+    <!-- ! Main nav -->
+    <nav class="main-nav--bg">
+  <div class=" main-nav">
+   
+    <div class="main-nav-end">
+      <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+        <span class="sr-only">Toggle menu</span>
+        <span class="icon menu-toggle--gray" aria-hidden="true"></span>
+      </button>
+     
+      <div class="d-flex gap-1">
+        <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
+          <span class="sr-only">Switch theme</span>
+          <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+          <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+        </button>
+       
+        <div class="nav-user-wrapper">
+          <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
+            <span class="sr-only">My profile</span>
+            <span class="nav-user-img">
+              <picture><source srcset="/img/avatar/avatar-illustrated-02.webp" type="image/webp"><img src="/img/avatar/avatar-illustrated-02.png" alt="User name"></picture>
+            </span>
+          </button>
+          <ul class="tasks-item-dropdown nav-user-dropdown dropdown">
+            
+            <li><a class="danger" href="/users/logout">
+                <i data-feather="log-out" aria-hidden="true"></i>
+                <span>Log out</span>
+              </a></li>
+          </ul>
+        </div>
+        </div>
+    </div>
+  </div>
+</nav>
+    <!-- ! Main -->
+    <main class="main tasks" id="skip-target">
+      <div class="container">
+        <% project.forEach(project =>{ %>
+        <div class="subheader" >
+         
+          <div class="project-header" style="background-color:<%= project.color %>">
+      
+      <div class="main-title" ">
+            <h2 class="main-title__text" ><%= project.title %></h2></div>
+            <% if (project.description) { %>
+              <p class="subtitle"><%= project.description%></p>
+            <% } %>
+            
+            <p class="small-text"><%= project.tickets.length%> issues</p>
+      
+          </div>
+          <% if (project.tickets.length !== 0) { %>
+          <div class="note-input mt-3">
+            <form method="post" action="/projects/<%= id %>/add-ticket" autocomplete="off">
+              <div class="form-group mb-2 addForm">
+                <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Add an issue">
+                
+            </div>
+            <section class="input-info hidden">
+              <input type="text" class="form-control" name="description" value="<%= description %>" placeholder="Define an issue">
+              <div class="d-flex form-group">
+          
+                <input type="radio" name="type" class="bug" id="bug" value="bug"/>
+                <label class="task-type" for="bug">bug</label>
+                <input type="radio" name="type" class="improvement" id="imp" value="improvement"/>
+                <label for="imp" class="task-type">improvement</label>
+            
+                
+              </div>
+              <button class="btn btn-dark mt-3">Add an issue</button>
+            </section>
+            </form>
+          </div>
+        </div>
+
+        
+
+          <div class="row content">
+           
+            <section class="container-block">
+              
+              <ul class="list list--issues">
+                <% project.tickets.forEach(ticket =>{ %>
+                <li id="id_<%= ticket._id %>" style="background-color: <%= ticket.color%> ;" class="list-content list-content--issue">
+           
+                  <div class="list-issues__title">
+                   <h4 class="list-title"><%= ticket.title.toUpperCase() %></h4>
+                   <span class="p-relative">
+                    <button class="dropdown-btn transparent-btn" type="button" title="More info">
+                      <div class="sr-only">More info</div>
+                      <i data-feather="more-horizontal" aria-hidden="true"></i>
+                    </button>
+                   
+                    <ul class="tasks-item-dropdown dropdown">
+                      
+                      <li><a class="add-btn" href="" data-toggle="modal" data-target="#Modal<%= ticket._id %>">Edit</a></li>
+                      <li><a href="/projects/<%=ticket.projectId%>/delete-ticket/<%=ticket._id%>" onclick="return confirm('Are you sure you want to delete this task?')">Delete</a></li>
+                      
+                    </ul>
+                    
+                  
+                    
+                  </span>
+                 
+                   
+                  </div>
+                <div class="list-issues__description">
+                  <% if (ticket.description) { %>
+                    
+                    <p class="list-subtitle"><%= ticket.description %></p>
+                    <% } %>
+                  </div>
+                </li>
+                <div class="modal fade" id="Modal<%= ticket._id %>">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content modal-style">
+                      <form class="edit-ticket" method="put" data-ticketid="<%=ticket._id%>" data-projectId="<%=ticket.projectId%>">
+                        <div class="form-group mb-4 editForm">
+                          <input type="text" class="form-control" name="title" value="<%= ticket.title %>" placeholder="Issue">
+                          <input type="text" class="form-control" name="description" value="<%= ticket.description %>" placeholder="Define the issue">
+                      </div>
+                      <div class="d-flex form-group">
+    
+                        <input type="radio" name="type" class="bug" id="bug<%= ticket._id %>" value="bug"/>
+                        <label class="task-type" for="bug<%= ticket._id %>">bug</label>
+                        <input type="radio" name="type" class="improvement" id="imp<%= ticket._id %>" value="improvement"/>
+                        <label for="imp<%= ticket._id %>" class="task-type">improvement</label>
+                    
+                        
+                      </div>
+                
+                  
+                      
+                      <button type="submit"  class="btn btn-dark btn-edit">Submit</button>
+                    </form>
+                      </div>
+                      
+                      
+                    </div>
+                  </div>
+                <% })%>
+              </ul>
+            </section>
+            
+            <% } else {%>
+              
+              <div class="note-input mt-5">
+                <form method="post" action="/projects/<%= id %>/add-ticket" autocomplete="off">
+                  <div class="form-group mb-2 addForm">
+                    <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Add an issue">
+                </div>
+                <section class="input-info">
+                  <input type="text" class="form-control" name="description" value="<%= description %>" placeholder="Define an issue">
+                  <div class="d-flex form-group">
+              
+                    <input type="radio" name="type" class="bug" id="bug" value="bug"/>
+                    <label class="task-type" for="bug">bug</label>
+                    <input type="radio" name="type" class="improvement" id="imp" value="improvement"/>
+                    <label for="imp" class="task-type">improvement</label>
+                
+                    
+                  </div>
+                  <button class="btn btn-outline-dark">Add an issue</button>
+                </section>
+                </form>
+              </div>
+              
+              <% } %>
+             
+      
+      </div>
+    
+            <% }) %>  
+        
+    </main>
+    
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script>
+
+  </script>
+  <%- include('../layout/footer.html'); %>

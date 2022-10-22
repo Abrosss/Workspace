@@ -2761,10 +2761,32 @@
   
  }
  .list--projects {
-  padding: 0 2rem;
+  padding: 0 8rem;
  }
  .list--tasks {
   padding: 0 15rem;
+ }
+ .list--issues {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 4rem;
+  height: 100%;
+ }
+ .list--issues .list-content--issue {
+  max-width: 23%;
+  padding: 1rem 1rem;
+  align-items: center;
+  min-height: 8rem;
+  flex-direction: column;
+  height: min-content;
+  float:right;
+ }
+ .list-issues__title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
  }
  .button-block {
   position: relative;
@@ -2784,7 +2806,7 @@
    -ms-flex-direction: column;
    flex-direction: column;
    border-radius: 10px;
-   padding: 1rem 0;
+   padding: 1rem 1rem;
    overflow: auto;
  }
  .list-content {
@@ -2825,6 +2847,11 @@ justify-content: space-between;
  
   padding: 0 1rem;
  }
+ .list-issues__description {
+  width: 100%;
+  word-break: break-word;
+  margin-bottom: auto;
+ }
  .list-content__title div {
   display: flex;
   align-items: center;
@@ -2859,11 +2886,12 @@ justify-content: space-between;
 
  }
  .list-subtitle {
-   font-size: 12px;
+   font-size: 1rem;
    line-height: 1.2;
    letter-spacing: -0.4px;
-   color: #b9b9b9;
+   color: black;
    margin-top: .5rem;
+ 
  }
  .small-text {
   font-weight: 500;
@@ -3039,6 +3067,9 @@ justify-content: space-between;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.note-input form {
+  width: 60%;
 }
 .note-input input {
   background-color: #fff;
@@ -3741,11 +3772,7 @@ border: 1px white solid;
     min-width: 100%;
    
   }
-  .note-input form {
-   
-    min-width: 100%;
-   
-  }
+  
   .note-item {
    
   }
@@ -4264,6 +4291,7 @@ border: 1px white solid;
    }
  }
  @media (max-width: 1000px) {
+ 
   #nav {
    width: 100%;
    padding: 2rem 1.5rem;
@@ -4316,7 +4344,11 @@ border: 1px white solid;
    min-width: 15rem;
    font-size: 1.1rem;
   }
- 
+  .note-input form {
+   
+    min-width: 100%;
+   
+  }
   .button {
    max-width: 20rem;
   }
@@ -4406,6 +4438,16 @@ border: 1px white solid;
  }
  
  @media (max-width: 991.98px) {
+  .list--issues {
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: nowrap;
+    padding: 0
+  }
+  .list--issues .list-content--issue {
+    max-width: 100%;
+    min-height: min-content
+  }
    .sort-bar-start {
      width: 100%;
      margin-bottom: 10px;

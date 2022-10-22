@@ -36,6 +36,9 @@ const TicketSchema = mongoose.Schema({
     },
     label:{
         type:String
+    },
+    color: {
+        type:String
     }
 })
 const ProjectSchema = mongoose.Schema({

@@ -14,7 +14,7 @@ router.put('/:projectId', services.edit_project)
 
 router.get('/delete-project/:id', services.delete_project)
 
-router.get('/:id', isUser, services.tickets)
+router.get('/:id', isUser, services.problems)
 
 router.post('/:id/add-ticket', services.add_ticket)
 

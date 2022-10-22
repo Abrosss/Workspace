@@ -127,7 +127,7 @@ exports.delete_project = (req, res) => {
   
 }
 
-exports.tickets = (req, res) =>{
+exports.problems = (req, res) =>{
     let title = ''
     let description = ''
     let type = ''
@@ -139,7 +139,7 @@ exports.tickets = (req, res) =>{
     .exec(function (err, projects) {
     Project.find({_id:id}).populate('tickets')
     .then(data =>{
-      res.render('pages/tasks', {
+      res.render('pages/problems', {
         projects:projects,
         project: data,
         userId: userId,
@@ -157,8 +157,42 @@ exports.tickets = (req, res) =>{
     })   
   })
 }
-
+exports.tasks = (req, res) =>{
+  let title = ''
+  let description = ''
+  let type = ''
+  let priority = ''
+  let status = ''
+  let id = req.params.id
+  let userId = req.user._id
+  Project.find({user:userId})
+  .exec(function (err, projects) {
+  Project.find({_id:id}).populate('tickets')
+  .then(data =>{
+    res.render('pages/problems', {
+      projects:projects,
+      project: data,
+      userId: userId,
+      title: title,
+      description: description,
+      type: type,
+      priority: priority,
+      status: status,
+      id: id
+    })
+    }
+  )
+  .catch(err=>{
+    console.log(err)
+  })   
+})
+}
 exports.add_ticket = (req, res) => {
+  let color
+  function getRandomColor() {
+    color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+    return color;
+  }
   let username = req.user.username
   let title = req.body.title
   let description = req.body.description
@@ -167,6 +201,7 @@ exports.add_ticket = (req, res) => {
   let status = 'open'
   let projectId = req.params.id
   let user = req.user._id
+  let randomColor = getRandomColor()
   let ticket = new Ticket({
     title: title,
     projectId:projectId,
@@ -175,7 +210,8 @@ exports.add_ticket = (req, res) => {
     priority:priority,
     status:status,
     user: user,
-    username:username
+    username:username,
+    color:randomColor
    })
    ticket.save(err =>{
     if(err) console.log(err)

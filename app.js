@@ -7,6 +7,8 @@ const cookieParser = require('cookie-parser')
 var expressValidator = require('express-validator');
 const session = require('express-session')
 const moment = require('moment');
+var cors = require("cors");
+
 dotenv.config()
 
 mongoose.connect(process.env.DB_STRING) //< database string from .env file
@@ -18,6 +20,7 @@ db.once('open', () =>{
 
 
 const app = express()
+app.use(cors());
     app.set('view engine', 'ejs')
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
