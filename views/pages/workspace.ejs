@@ -147,34 +147,30 @@
       <div class="container">
         <section class="row full-height">
           <section class="notes-section">
-            <div class="notes-header">
+            <div class="notes-header project-header" >
               <div class="note-name">
               <span class="badge-success badge-task">TASK</span>
               <% ticket.forEach(ticket =>{ %>
-              <h2><%=ticket.title%></h2>
+              <h2><%=ticket.title.toUpperCase()%></h2>
             
             </div>
             <p>from <a class="italic underline" href="/projects/<%=ticket.projectId._id%>"><%=ticket.projectId.title%></a></p>
-              <% })%>
+             
               <div class="note-input mt-5">
-              <form action="" method="POST" autocomplete="off">
-                <input type="text" placeholder="enter task.." name="note">
+              <form action="/api/<%=ticket._id%>/addTask" method="POST" autocomplete="off">
+                <input type="text" placeholder="Add a task.." name="note">
               </form>
+             
             </div>
             </div>
             <div class="notes-container">
-              <div class="note-item col-2">
-                <p>https://www.youtube.com/watch?v=Nmv2-oSQyWE
-                </p>
+              <% ticket.notes.forEach(note =>{ %>
+              <div class="note-item">
+                <p><%=note.content%></p>
               </div>
-              <div class="note-item col-2">
-                <p>how to create schemas?</p>
-              </div>
-              <div class="note-item col-2">
-                <p>Read about mongoose here
-                  https://zellwk.com/blog/mongoose/</p>
-              </div>
+              <% })%>
             </div>
+             <% })%>
             <div class="mark-button">
               <a class="btn btn-success" href="#">MARK COMPLETED</a>
             </div>

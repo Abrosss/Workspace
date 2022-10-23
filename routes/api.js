@@ -121,4 +121,20 @@ router.put('/:ticketId', (req, res) => {
  })
 
 })
+router.post('/:ticketId/addTask', (req, res) => {
+    let ticketId = req.params.ticketId
+    let content = req.body.note
+    
+   let newNote = {'content':content}
+   Ticket.findById({_id:ticketId}, (err, ticket)=>{
+    if(err) return console.log(err)
+    
+    ticket.notes.push(newNote)
+    ticket.save(err =>{
+      if(err) console.log(err)
+      res.redirect(`/projects/${ticket.projectId}/${ticketId}`)
+     })
+   })
+  
+})
 module.exports = router

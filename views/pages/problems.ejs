@@ -140,10 +140,13 @@
               
               <ul class="list list--issues">
                 <% project.tickets.forEach(ticket =>{ %>
-                <li id="id_<%= ticket._id %>" style="background-color: <%= ticket.color%> ;" class="list-content list-content--issue">
+                <li id="id_<%= ticket._id %>" style="border: 1px <%= project.color%> solid ;" class="list-content list-content--issue">
            
                   <div class="list-issues__title">
-                   <h4 class="list-title"><%= ticket.title.toUpperCase() %></h4>
+                    <div>
+                   <a href="/projects/<%= ticket.projectId%>/<%= ticket._id %>" class="list-title"><%= ticket.title.toUpperCase() %></a>
+                    <span><%= ticket.notes.length%> tasks</span>
+                  </div>
                    <span class="p-relative">
                     <button class="dropdown-btn transparent-btn" type="button" title="More info">
                       <div class="sr-only">More info</div>

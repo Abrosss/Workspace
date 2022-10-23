@@ -20,8 +20,6 @@ router.post('/:id/add-ticket', services.add_ticket)
 
 router.post('/:id/add-ticket', services.add_ticket)
 
-
-
 router.get('/:projectId/delete-ticket/:id', services.delete_ticket)
 
 router.get('/:id/:ticketId', isUser, services.workspace)

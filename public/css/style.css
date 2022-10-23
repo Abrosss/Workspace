@@ -2774,10 +2774,10 @@
   height: 100%;
  }
  .list--issues .list-content--issue {
-  max-width: 23%;
+  max-width: 10rem;
   padding: 1rem 1rem;
   align-items: center;
-  min-height: 8rem;
+  min-height: 10rem;
   flex-direction: column;
   height: min-content;
   float:right;
@@ -2787,6 +2787,12 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+ }
+ .list-issues__title div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
  }
  .button-block {
   position: relative;
@@ -2831,6 +2837,9 @@ justify-content: space-between;
   background-color: white;
   border-bottom: 1px rgb(213, 211, 211) solid;
   
+ }
+ .list-content--issue:hover {
+  scale: 1.02;
  }
  .list-content__title {
   position: absolute;
@@ -2882,7 +2891,7 @@ justify-content: space-between;
    line-height: 1.2;
    letter-spacing: -0.4px;
    color: #171717;
-
+ 
  }
  .list-subtitle {
    font-size: 1rem;
@@ -3066,21 +3075,25 @@ justify-content: space-between;
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 .note-input form {
   width: 60%;
+
 }
 .note-input input {
+  border: 1px black solid;
   background-color: #fff;
   min-width: 35rem;
   padding-left: .5rem;
 }
 .note-item {
-  background-color: #fff;
+  background-color: rgb(203, 175, 175);
   min-height: 10rem;
   padding: 1rem 1rem;
   border-radius: 5px;
   word-wrap: break-word;
+  width: 23%;
 }
 .badge-task {
   position: absolute;
@@ -3335,7 +3348,7 @@ header {
    height: 24px;
  }
  .darkmode .dropdown-btn {
-  color: white;
+  color: black;
 }
  .darkmode .setting{
    background-image: url(../img/svg/Bulk/Setting-white.svg);
@@ -3425,7 +3438,7 @@ header {
 }
  .darkmode  .list-title {
  
-  color: white;
+  color: black;
  }
  .darkmode .sidebar {
    background-color: #161624 !important;
@@ -3744,15 +3757,8 @@ border: 1px white solid;
    .notes-section {
     
   }
-  .notes-container {
-  
-      flex-direction: column;
 
-     
-  }
-  .notes-container .note-item{
-    width: 100%;
-  }
+ 
   
   .notes-header {
     
@@ -4290,7 +4296,9 @@ border: 1px white solid;
    }
  }
  @media (max-width: 1000px) {
- 
+  .notes-container .note-item{
+    width: 100%;
+  }
   #nav {
    width: 100%;
    padding: 2rem 1.5rem;
