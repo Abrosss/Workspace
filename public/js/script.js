@@ -319,6 +319,23 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 })() ;
 
+(function() {
+  const inputs = document.querySelectorAll('input[type=checkbox]')
+  inputs.forEach(input => {
+input.addEventListener('click', (e) => {
+  e.stopImmediatePropagation();
+  (e.currentTarget.checked) ? false : true;
+  e.currentTarget.checked=(checked) ? false : checked.toString();
+ console.log('okok')
+})
+  })
+
+
+    // prevents the event from bubbling up the DOM tree
+    // eg the modal from cancelling the event
+    
+
+})()
 
 //get the updated data from database and insert it in the progress bar on the project page
 // (function(){

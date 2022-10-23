@@ -99,8 +99,8 @@
          
           <div class="project-header" style="background-color:<%= project.color %>">
       
-      <div class="main-title" ">
-            <h2 class="main-title__text" ><%= project.title %></h2></div>
+      <div class="main-title">
+            <h2 class="main-title__text" ><%= project.title.toUpperCase()%></h2></div>
             <% if (project.description) { %>
               <p class="subtitle"><%= project.description%></p>
             <% } %>
@@ -126,7 +126,7 @@
             
                 
               </div>
-              <button class="btn btn-dark mt-3">Add an issue</button>
+              <button type="submit" class="btn btn-dark mt-3">Add an issue</button>
             </section>
             </form>
           </div>
@@ -143,8 +143,8 @@
                 <li id="id_<%= ticket._id %>" style="border: 1px <%= project.color%> solid ;" class="list-content list-content--issue">
            
                   <div class="list-issues__title">
-                    <div>
-                   <a href="/projects/<%= ticket.projectId%>/<%= ticket._id %>" class="list-title"><%= ticket.title.toUpperCase() %></a>
+                    <div data-toggle="modal" data-target="#Modal2<%= ticket._id %>" >
+                   <h4 class="list-title"><%= ticket.title.toUpperCase() %></h4>
                     <span><%= ticket.notes.length%> tasks</span>
                   </div>
                    <span class="p-relative">
@@ -200,6 +200,35 @@
                       
                     </div>
                   </div>
+                  <div class="modal fade" id="Modal2<%= ticket._id %>">
+                    <div class="modal-dialog modal-lg modal-dialog--notes">
+                      <div class="modal-content modal-style modal-content--notes">
+                        <div class="notes-container">
+                          <h4>Todolist</h4>
+                          <div class="task-input">
+                            <form data-ticketid="<%=ticket._id%>" action="/api/<%=ticket._id%>/addTask" method="POST" autocomplete="off">
+                              <input type="text" placeholder="Add a task.." name="note">
+                            </form>
+                           
+                          </div>
+                          <ul>
+                          <% ticket.notes.forEach(note =>{ %>
+                          <li class="note-item">
+                            <div class="round">
+                              <input type="checkbox" id="<%=note.id%>" />
+                              <label for="<%=note.id%>"></label>
+                            </div>  <p><%=note.content%></p>
+                          </li>
+                        
+                          <% })%>
+                          
+                        </ul>
+                        </div>
+                        </div>
+                        
+                        
+                      </div>
+                    </div>
                 <% })%>
               </ul>
             </section>

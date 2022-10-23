@@ -1,6 +1,7 @@
 const express = require('express')
 const { Ticket, Project } = require('../models/project')
 const router = express.Router()
+const { v4: uuidv4 } = require('uuid');
 
 
 //API to work with database, client-server side
@@ -123,16 +124,17 @@ router.put('/:ticketId', (req, res) => {
 })
 router.post('/:ticketId/addTask', (req, res) => {
     let ticketId = req.params.ticketId
-    let content = req.body.note
-    
-   let newNote = {'content':content}
+    let content = req.body.content
+    let id = req.body.id
+    console.log(content)
+   let newNote = {"id":id, 'content':content}
    Ticket.findById({_id:ticketId}, (err, ticket)=>{
     if(err) return console.log(err)
     
     ticket.notes.push(newNote)
     ticket.save(err =>{
       if(err) console.log(err)
-      res.redirect(`/projects/${ticket.projectId}/${ticketId}`)
+      res.redirect(`/projects/${ticket.projectId}`)
      })
    })
   

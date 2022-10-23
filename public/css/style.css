@@ -2773,6 +2773,13 @@
   padding: 0 4rem;
   height: 100%;
  }
+ .modal-dialog--notes {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
  .list--issues .list-content--issue {
   max-width: 10rem;
   padding: 1rem 1rem;
@@ -2885,12 +2892,17 @@ justify-content: space-between;
  .list-content__progress--yellow {
   background: #FFF385;
  }
+ .modal-content--notes {
+  width: min-content;
+  margin: auto;
+ }
  .list-title {
    font-weight: 600;
    font-size: 1rem;
    line-height: 1.2;
    letter-spacing: -0.4px;
    color: #171717;
+   cursor: pointer;
  
  }
  .list-subtitle {
@@ -2918,7 +2930,52 @@ justify-content: space-between;
   align-items: center;
   justify-content: center;
  }
+ .round {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
 
+.round label {
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 24px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 24px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 6px;
+  opacity: 0;
+  position: absolute;
+  top: 6px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+ 
  /* bookmarks-section */
 
 #bookmarks {
@@ -3041,16 +3098,26 @@ justify-content: space-between;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  
 }
 .notes-container {
   overflow-y: auto;
   width: 100%;
   height: min-content;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2rem;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  max-height: 30rem;
+}
+.notes-container ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  padding: 0 .5rem;
 }
 .notes-header {
   width: 100%;
@@ -3078,7 +3145,7 @@ justify-content: space-between;
   
 }
 .note-input form {
-  width: 60%;
+  width: 100%;
 
 }
 .note-input input {
@@ -3088,12 +3155,16 @@ justify-content: space-between;
   padding-left: .5rem;
 }
 .note-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   background-color: rgb(203, 175, 175);
-  min-height: 10rem;
-  padding: 1rem 1rem;
+  min-height: min-content;
+  padding: .5rem 1rem;
   border-radius: 5px;
   word-wrap: break-word;
-  width: 23%;
+  
 }
 .badge-task {
   position: absolute;

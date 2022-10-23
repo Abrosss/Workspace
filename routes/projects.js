@@ -18,7 +18,6 @@ router.get('/:id', isUser, services.problems)
 
 router.post('/:id/add-ticket', services.add_ticket)
 
-router.post('/:id/add-ticket', services.add_ticket)
 
 router.get('/:projectId/delete-ticket/:id', services.delete_ticket)
 

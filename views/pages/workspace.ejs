@@ -156,19 +156,28 @@
             </div>
             <p>from <a class="italic underline" href="/projects/<%=ticket.projectId._id%>"><%=ticket.projectId.title%></a></p>
              
-              <div class="note-input mt-5">
-              <form action="/api/<%=ticket._id%>/addTask" method="POST" autocomplete="off">
-                <input type="text" placeholder="Add a task.." name="note">
-              </form>
              
             </div>
-            </div>
+            
             <div class="notes-container">
-              <% ticket.notes.forEach(note =>{ %>
-              <div class="note-item">
-                <p><%=note.content%></p>
+              <div class="note-input">
+                <form action="/api/<%=ticket._id%>/addTask" method="POST" autocomplete="off">
+                  <input type="text" placeholder="Add a task.." name="note">
+                </form>
+               
               </div>
+              <ul>
+              <% ticket.notes.forEach(note =>{ %>
+              <li class="note-item">
+                <div class="round">
+                  <input type="checkbox" id="checkbox" />
+                  <label for="checkbox"></label>
+                </div>  <p><%=note.content%></p>
+              </li>
+            
               <% })%>
+              
+            </ul>
             </div>
              <% })%>
             <div class="mark-button">
@@ -188,7 +197,10 @@
         
           <div class="bookmarks-container">
           <div class="bookmark-item workspace">
-            <span class="icon circle"></span>
+            <div class="round">
+              <input type="checkbox" checked id="checkbox" />
+              <label for="checkbox"></label>
+            </div>
             <p>npm install</p>
             
           </div>
