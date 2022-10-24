@@ -3281,7 +3281,7 @@ justify-content: space-between;
   background: white;
   color: black;
   padding: .8rem 1rem;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.1rem;
   border: none;
   text-align: center;
@@ -3293,7 +3293,7 @@ justify-content: space-between;
 }
 #nav .landing-page.button:hover {
   background: #11111d;
-  border: 1px transparent solid;
+  border: 1px white solid;
   color: white;
 }
 header {
@@ -3327,7 +3327,7 @@ header {
   display: inline-block;
 }
 #nav a:hover {
-  color: black;
+  color: white;
 }
 
 #nav #mobileMenu {
@@ -3390,6 +3390,7 @@ header {
   font-size: 1.5rem;
   font-family: 'Poppins', sans-serif;
   color: black;
+  font-weight: 600;
 }
 
 #burger {
