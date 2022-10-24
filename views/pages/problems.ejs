@@ -225,7 +225,8 @@
                           </div>
                           <ul>
                           <% ticket.notes.forEach(note =>{ %>
-                          <li class="note-item">
+                          <li class="note-item" data-id="<%=note.id%>">
+                            <div class="flex">
                             <div class="round">
                               <% if (note.completed) { %>
                                 <input type="checkbox" checked id="<%=note.id%>"/>
@@ -233,7 +234,12 @@
                                 <input type="checkbox" id="<%=note.id%>"/>
                                 <% }%>
                               <label for="<%=note.id%>"></label>
-                            </div>  <p><%=note.content%></p>
+                            </div>  <p class="note-text"><%=note.content%></p>
+                            <form class="edit-note hidden">
+                              <input></input>
+                            </form>
+                          </div>
+                            <span data-ticketid="<%=ticket.id%>" data-noteid="<%=note.id%>" class="icon trash delete-note"></span>
                           </li>
                         
                           <% })%>

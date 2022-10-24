@@ -157,6 +157,30 @@ router.put('/updatenote/:noteId', (req, res) => {
      
      )
     })
-       
-      
+//EDIT NOTE
+router.put('/edit-note/:noteId', (req, res) => {
+      const id = req.params.ticketId
+      const noteId = req.params.noteId
+        let content = req.body.content
+        console.log(noteId)
+        Ticket.updateOne({'notes.id': noteId}, {'$set': {
+          'notes.$.content': content
+      }}, function(err) {
+        if(err) console.log(err)
+         }
+         
+         
+         )
+        })   
+//DELETE NOTE
+router.put('/:ticketId/delete-note/:noteId', (req, res) => {
+  const id = req.params.ticketId
+  const noteId = req.params.noteId
+  console.log(noteId)
+    Ticket.updateOne({ _id: id }, { "$pull": { "notes": { "id": noteId } }}, { safe: true, multi:true }, function(err, note) {
+      console.log(note)
+    });
+     
+     
+    })     
 module.exports = router

@@ -319,22 +319,19 @@ document.addEventListener('DOMContentLoaded', function () {
           req.send()
         }
   }
-})() ;
+})();
 
 (function() {
   const noteContainer = document.querySelectorAll('.notes-container')
-  noteContainer.forEach(container => container.addEventListener('click', handleInput))
+  noteContainer.forEach(container => container.addEventListener('click', handleInput2))
 
+  function handleInput2(e) {
 
-
-    
- 
-  function handleInput(e) {
    if(e.target.type==='checkbox') {
     console.log(e.target.checked)
     e.stopImmediatePropagation();
     const noteId = e.target.id;
-   e.currentTarget.checked ? false : true;
+   e.target.checked ? false : true;
     // e.currentTarget.checked=(checked) ? false : checked.toString();
   
    markCompleted(noteId, e.target.checked)
@@ -363,9 +360,100 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 }
 
-})()
+})();
+(function() {
+  const containers = document.querySelectorAll('.notes-container')
+  //https://plnkr.co/edit/hi6zoBbDbBiSRftV?p=preview&preview
 
+  containers.forEach(container => {
+  container.addEventListener('click', (e) => {
+    if(e.target.classList.contains('note-text')) {
+      const noteContainer = e.target.parentNode
+      const mainContainer = noteContainer.parentNode
+      const editSection = noteContainer.querySelector('.note-text')
+      const form = noteContainer.querySelector('.edit-note')
+      const textarea = form.querySelector('input')
+      textarea.value = editSection.innerText
+   
+      form.classList.toggle('hidden')
+      editSection.classList.toggle('hidden')
+      form.focus()
+      
+      textarea.addEventListener('focusout',blurOut)
+      form.addEventListener('submit', handleInput)
+   
+      function blurOut() {
+        if(editSection.classList.contains('hidden')) {
+          form.classList.toggle('hidden')
+          editSection.classList.toggle('hidden')
+        }
+      }
+  function handleInput(e) {
+    e.preventDefault()
+     const noteId = mainContainer.dataset.id;
+     console.log(noteContainer)
+     blurOut()
+     editSection.textContent=textarea.value
+     fetch(`/api/edit-note/${noteId}`, {
+       method: "PUT",
+       headers: {
+         'Content-type': 'application/json'
+       },
+       body: JSON.stringify({
+         content:  textarea.value
+       })
+     }).then(res => {
+       if (res.ok) {
+       
+       } else {
+         console.log("HTTP request unsuccessful");
+       }
+ 
+     }).catch (err => {
+       console.log(err);
+   })
 
+     
+   
+  }
+  
+  
+    }})})
+ 
+
+})();
+
+(function() {
+  const noteContainer = document.querySelectorAll('.notes-container')
+  noteContainer.forEach(container => container.addEventListener('click', deleteNote))
+  
+  function deleteNote(e) {
+   
+  
+    if(e.target.classList.contains('delete-note')) {
+      const note = e.target.parentNode
+      const container = note.parentNode
+      let ticketId = e.target.dataset.ticketid
+      let noteId = e.target.dataset.noteid
+      container.removeChild(note)
+      const req = new XMLHttpRequest()
+      req.open('PUT', `/api/${ticketId}/delete-note/${noteId}`, true)
+      req.setRequestHeader('Content-Type', 'application/json')
+      req.addEventListener('load', function() {
+        if(req.status === 200 && req.readyState === 4) {
+         
+         
+        } else {
+          throw new Error ('Bad request')
+        }
+      })
+      req.send()
+   
+  }
+
+}}
+
+)()
 //get the updated data from database and insert it in the progress bar on the project page
 // (function(){
 //   const page = document.querySelector('.page-flex')

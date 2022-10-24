@@ -939,7 +939,12 @@
   height: 18px;
   cursor: pointer;
  }
-
+ .trash {
+  background-image: url(../img/svg/trash.svg);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+ }
  .circle {
   background-image: url(../img/svg/circle.svg);
   width: 24px;
@@ -1532,6 +1537,9 @@
  
  .note-toggle{
    cursor: pointer;
+ }
+ .note-text.hidden {
+  display: none;
  }
  .project-header{
    display: flex;
@@ -3168,13 +3176,24 @@ justify-content: space-between;
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
-  background-color: rgb(203, 175, 175);
+  background-color: #fcf5fc;
   min-height: min-content;
   padding: .5rem 1rem;
   border-radius: 5px;
   word-wrap: break-word;
   
+}
+.edit-note {
+  width: 100%;
+}
+.edit-note input {
+  background-color: white;
+
+}
+.edit-note.hidden {
+  display: none;
 }
 .badge-task {
   position: absolute;

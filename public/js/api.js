@@ -96,7 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 form.reset()
                const li = document.createElement('li')
                li.classList.add('note-item')
-               li.innerHTML=`<div class="round"><input type="checkbox" id="${id}" /><label for="${id}"></label></div>  <p>${note}</p>`
+               li.innerHTML=` <div class="flex"><div class="round"><input type="checkbox" id="${id}" /><label for="${id}"></label></div>  <p>${note}</p><form class="edit-note hidden">
+               <input></input>
+             </form></div><span data-ticketid="${ticketId}" data-noteid="${id}" class="icon trash delete-note"></span>`
               ul.appendChild(li)
              
               } else {
