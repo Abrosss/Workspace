@@ -3189,6 +3189,7 @@ justify-content: space-between;
   width: 100%;
 }
 .edit-note input {
+  width: 100%;
   background-color: white;
 
 }
@@ -3447,8 +3448,21 @@ header {
    width: 24px;
    height: 24px;
  }
+ .darkmode .notes-container h4{
+  color: white;
+ }
+ .darkmode .note-item {
+  background-color: #11111d ;
+ }
+
  .darkmode .dropdown-btn {
-  color: black;
+  color: white;
+}
+.darkmode .note-text {
+  color: white;
+}
+.darkmode .edit-note {
+  color: white;
 }
  .darkmode .setting{
    background-image: url(../img/svg/Bulk/Setting-white.svg);
@@ -3538,7 +3552,10 @@ header {
 }
  .darkmode  .list-title {
  
-  color: black;
+  color: white;
+ }
+ .darkmode .quantity {
+  color: white;
  }
  .darkmode .sidebar {
    background-color: #161624 !important;
@@ -3729,6 +3746,9 @@ border: 1px white solid;
  }
  .darkmode .task-name{
    color: white;
+ }
+ .darkmode .list--issues .list-content--issue {
+  background-color: #161624;
  }
  .moon-icon {
    display: none;

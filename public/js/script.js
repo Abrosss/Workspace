@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
    
       form.classList.toggle('hidden')
       editSection.classList.toggle('hidden')
-      form.focus()
+      textarea.focus()
       
       textarea.addEventListener('focusout',blurOut)
       form.addEventListener('submit', handleInput)
