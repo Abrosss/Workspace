@@ -126,8 +126,9 @@ router.post('/:ticketId/addTask', (req, res) => {
     let ticketId = req.params.ticketId
     let content = req.body.content
     let id = req.body.id
+    let status = false
     console.log(content)
-   let newNote = {"id":id, 'content':content}
+   let newNote = {"id":id, 'content':content, "completed":status}
    Ticket.findById({_id:ticketId}, (err, ticket)=>{
     if(err) return console.log(err)
     
@@ -139,4 +140,23 @@ router.post('/:ticketId/addTask', (req, res) => {
    })
   
 })
+
+//https://stackoverflow.com/questions/15691224/mongoose-update-values-in-array-of-objects
+//MARK COMPLETED
+router.put('/updatenote/:noteId', (req, res) => {
+  const id = req.params.ticketId
+  const noteId = req.params.noteId
+    let status = req.body.status
+  console.log(status)
+    Ticket.updateOne({'notes.id': noteId}, {'$set': {
+      'notes.$.completed': status
+  }}, function(err) {
+    if(err) console.log(err)
+     }
+     
+     
+     )
+    })
+       
+      
 module.exports = router

@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 form.reset()
                const li = document.createElement('li')
                li.classList.add('note-item')
-               li.innerHTML=`<div class="round"><input type="checkbox" id="${id}" /><label for="<%=note.id%>"></label></div>  <p>${note}</p>`
+               li.innerHTML=`<div class="round"><input type="checkbox" id="${id}" /><label for="${id}"></label></div>  <p>${note}</p>`
               ul.appendChild(li)
              
               } else {

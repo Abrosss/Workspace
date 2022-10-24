@@ -143,10 +143,22 @@
                 <li id="id_<%= ticket._id %>" style="border: 1px <%= project.color%> solid ;" class="list-content list-content--issue">
            
                   <div class="list-issues__title">
-                    <div data-toggle="modal" data-target="#Modal2<%= ticket._id %>" >
+                    <div class="column" data-toggle="modal" data-target="#Modal2<%= ticket._id %>" >
+                      <div class="flex">
                    <h4 class="list-title"><%= ticket.title.toUpperCase() %></h4>
-                    <span><%= ticket.notes.length%> tasks</span>
+                  
+                      <% if (ticket.type) { %>
+                        <span class="priority priority--red"><%= ticket.type%> </span>
+                        <% } %>
+                        <% if (ticket.notes.length == 0) { %>
+                          <span class="quantity"><%= ticket.notes.length%> tasks</span>
+                          <% } else {%>
+                            <span class="quantity"><%- ticket.notes.filter(note => note.completed === true).length %>/<%= ticket.notes.length%> tasks</span>
+                            <% } %>
+                    </div>
+                  
                   </div>
+                
                    <span class="p-relative">
                     <button class="dropdown-btn transparent-btn" type="button" title="More info">
                       <div class="sr-only">More info</div>
@@ -207,7 +219,7 @@
                           <h4>Todolist</h4>
                           <div class="task-input">
                             <form data-ticketid="<%=ticket._id%>" action="/api/<%=ticket._id%>/addTask" method="POST" autocomplete="off">
-                              <input type="text" placeholder="Add a task.." name="note">
+                              <input  type="text" placeholder="Add a task.." name="note">
                             </form>
                            
                           </div>
@@ -215,7 +227,11 @@
                           <% ticket.notes.forEach(note =>{ %>
                           <li class="note-item">
                             <div class="round">
-                              <input type="checkbox" id="<%=note.id%>" />
+                              <% if (note.completed) { %>
+                                <input type="checkbox" checked id="<%=note.id%>"/>
+                                <% } else {%>
+                                <input type="checkbox" id="<%=note.id%>"/>
+                                <% }%>
                               <label for="<%=note.id%>"></label>
                             </div>  <p><%=note.content%></p>
                           </li>

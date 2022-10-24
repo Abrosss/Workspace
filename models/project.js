@@ -24,9 +24,11 @@ const TicketSchema = mongoose.Schema({
     completed: {
         type:Boolean
     },
-    notes:{
-        type:Array
-    },
+    notes : [{
+        id : String,
+        content : String,
+        completed: Boolean
+         }],
     todolist:{
         type:Array
     },

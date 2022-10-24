@@ -1142,7 +1142,11 @@
  .secondary-default-btn:hover {
    background-color: rgba(47, 73, 209, 0.1);
  }
- 
+ .flex {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+ }
  .flat-btn {
    display: -webkit-box;
    display: -ms-flexbox;
@@ -1802,10 +1806,10 @@
  
  .priority{
    cursor: pointer;
-   margin-left: .3rem;
+
    display: flex;
-   justify-content: center;
-   align-items: center;
+  width: min-content;
+
    color: black;
    border-radius: 10px;
 
@@ -2291,7 +2295,12 @@
  .task-item.active a{
   color: black;
  }
- 
+ .task-input {
+  width: 100%;
+ }
+ .task-input input {
+  width: 100%;
+ }
  .sublist-sidebar-tasks.show {
   display: block;
  }
@@ -2768,8 +2777,8 @@
  }
  .list--issues {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+
   padding: 0 4rem;
   height: 100%;
  }
@@ -2781,10 +2790,10 @@
   align-items: center;
  }
  .list--issues .list-content--issue {
-  max-width: 10rem;
+  max-width: 100%;
   padding: 1rem 1rem;
   align-items: center;
-  min-height: 10rem;
+ 
   flex-direction: column;
   height: min-content;
   float:right;
@@ -2795,10 +2804,13 @@
   align-items: center;
   width: 100%;
  }
- .list-issues__title div:first-child {
+ .list-issues__title .quantity {
+  font-size: .8rem;
+ }
+ .column {
   display: flex;
-  flex-direction: column;
-  gap: .5rem;
+ flex-direction: column;
+
 
  }
  .button-block {
@@ -2845,9 +2857,7 @@ justify-content: space-between;
   border-bottom: 1px rgb(213, 211, 211) solid;
   
  }
- .list-content--issue:hover {
-  scale: 1.02;
- }
+
  .list-content__title {
   position: absolute;
   height: 100%;
@@ -2893,7 +2903,7 @@ justify-content: space-between;
   background: #FFF385;
  }
  .modal-content--notes {
-  width: min-content;
+  width: 25rem;
   margin: auto;
  }
  .list-title {
@@ -3108,7 +3118,7 @@ justify-content: space-between;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   max-height: 30rem;
 }
 .notes-container ul {
