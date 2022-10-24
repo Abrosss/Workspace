@@ -1150,7 +1150,7 @@
  .flex {
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: .9rem;
  }
  .flat-btn {
    display: -webkit-box;
@@ -1537,6 +1537,9 @@
  
  .note-toggle{
    cursor: pointer;
+ }
+ .note-text {
+  word-break: break-word
  }
  .note-text.hidden {
   display: none;
@@ -2308,6 +2311,10 @@
  }
  .task-input input {
   width: 100%;
+ }
+ .task-input input::placeholder{
+  color: #11111d;
+  padding-left: .5rem;
  }
  .sublist-sidebar-tasks.show {
   display: block;
@@ -3746,6 +3753,12 @@ border: 1px white solid;
  }
  .darkmode .task-name{
    color: white;
+ }
+ .darkmode .task-input {
+  border: 1px whitesmoke solid;
+ }
+ .darkmode  .task-input input::placeholder {
+  color: white;
  }
  .darkmode .list--issues .list-content--issue {
   background-color: #161624;

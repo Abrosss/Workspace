@@ -217,7 +217,7 @@
                       <div class="modal-content modal-style modal-content--notes">
                         <div class="notes-container">
                           <h4>Todolist</h4>
-                          <div class="task-input">
+                          <div class="task-input" style="border: 1px <%= project.color%> solid ;">
                             <form data-ticketid="<%=ticket._id%>" action="/api/<%=ticket._id%>/addTask" method="POST" autocomplete="off">
                               <input  type="text" placeholder="Add a task.." name="note">
                             </form>
@@ -225,7 +225,7 @@
                           </div>
                           <ul>
                           <% ticket.notes.forEach(note =>{ %>
-                          <li class="note-item" data-id="<%=note.id%>">
+                          <li class="note-item"  data-id="<%=note.id%>">
                             <div class="flex">
                             <div class="round">
                               <% if (note.completed) { %>
