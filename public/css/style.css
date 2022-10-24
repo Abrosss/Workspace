@@ -2311,10 +2311,11 @@
  }
  .task-input input {
   width: 100%;
+  padding-left: .5rem;
  }
  .task-input input::placeholder{
   color: #11111d;
-  padding-left: .5rem;
+ 
  }
  .sublist-sidebar-tasks.show {
   display: block;
