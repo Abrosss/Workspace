@@ -3452,6 +3452,9 @@ header {
    background-color: #222235;
    color: #D6D7E3;
  }
+ .darkmode .list-subtitle {
+  color: white;
+ }
  .darkmode  #nav .landing-page.button:hover {
   background-color: transparent;
   color: white;
