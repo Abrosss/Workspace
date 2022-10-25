@@ -3452,6 +3452,9 @@ header {
    background-color: #222235;
    color: #D6D7E3;
  }
+ .darkmode .small-text {
+  color: white;
+ }
  .darkmode .list-subtitle {
   color: white;
  }
