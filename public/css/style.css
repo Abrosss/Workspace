@@ -2855,7 +2855,7 @@
    overflow: auto;
  }
  .list-content {
-
+  min-height: 4rem;
    display: -webkit-box;
    display: -ms-flexbox;
    display: flex;
