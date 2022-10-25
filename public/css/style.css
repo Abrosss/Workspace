@@ -3445,6 +3445,9 @@ header {
    /* Buttons */
    /* Footer */
  }
+ .darkmode #header .login.button {
+  color: white;
+ }
  .darkmode .white-block {
    background-color: #222235;
    color: #D6D7E3;
@@ -4560,11 +4563,14 @@ border: 1px white solid;
    display: block;
    border: 1px #488EFF solid;
    background-color: transparent;
-   color: white;
+   color: #488EFF ;
    font-weight: 400;
  }
  .login-header p {
   display: none;
+ }
+ .small-text {
+  color: white;
  }
  }
  @media (max-width: 1300px) {
