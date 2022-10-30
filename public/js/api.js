@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             let note = data.note
             let id = Date.now()
             let newNote = {"id":id, 'content':note}
-          
+            if(!data.note) return
             // send out to a REST API
             const req = new XMLHttpRequest()
             req.open('POST', `/api/${ticketId}/addTask`)

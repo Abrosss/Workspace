@@ -91,17 +91,21 @@
               <section class="container-block">
                 
                 <ul class="list list--projects">
+                 
                   <% projects.forEach(project =>{ %>
                   <li id="id_<%=project._id%>" class="list-content" style="background-color:<%=project.color%> ;">
                     
                     <div class="list-content__title">
                       <div>
                       <svg class="handle" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M8.5,10a2,2,0,1,0,2,2A2,2,0,0,0,8.5,10Zm0,7a2,2,0,1,0,2,2A2,2,0,0,0,8.5,17Zm7-10a2,2,0,1,0-2-2A2,2,0,0,0,15.5,7Zm-7-4a2,2,0,1,0,2,2A2,2,0,0,0,8.5,3Zm7,14a2,2,0,1,0,2,2A2,2,0,0,0,15.5,17Zm0-7a2,2,0,1,0,2,2A2,2,0,0,0,15.5,10Z"/></svg>
-                      <a href="/projects/<%=project._id%>">
+                      <a class="flex flex--projects" href="/projects/<%=project._id%>">
                       <span class="list-title" ><%= project.title.toUpperCase() %></span>
-                      <!-- <p class="list-subtitle"><%= project.description %></p> -->
+                      <p class="list-subtitle list-subtitle--projects"><%= project.description %></p>
                       </a>
+                      
                     </div>
+                    <div>
+                    
                     <span class="p-relative">
                       <button class="dropdown-btn transparent-btn" type="button" title="More info">
                         <div class="sr-only">More info</div>
@@ -117,6 +121,7 @@
                     
                       
                     </span>
+                  </div>
                     </div>
                    
                     <div class="modal fade" id="Modal<%= project._id %>">

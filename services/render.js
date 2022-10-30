@@ -21,7 +21,9 @@ exports.projects = (req, res) =>{
 }
 
 exports.add_project = (req, res) =>{
-
+  if(!req.body.title){
+    return res.redirect('/projects')
+  }
   function getRandomColor() {
     color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
     return color;

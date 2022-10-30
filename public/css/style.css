@@ -1155,6 +1155,12 @@
   align-items: center;
   gap: .9rem;
  }
+ .normal-font {
+  font-weight: 400;
+ }
+ .flex--projects {
+  gap: 2rem;
+ }
  .flat-btn {
    display: -webkit-box;
    display: -ms-flexbox;
@@ -1524,6 +1530,7 @@
    font-size: 2.5rem;
    line-height: 1.42;
    color: #171717;
+   text-align: center;
 
  }
  .subtitle {
@@ -1542,6 +1549,7 @@
    cursor: pointer;
  }
  .note-text {
+  width: 100%;
   word-break: break-word
  }
  .note-text.hidden {
@@ -2311,10 +2319,17 @@
  }
  .task-input {
   width: 100%;
+ 
+ }
+ .task-input form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
  }
  .task-input input {
   width: 100%;
   padding-left: .5rem;
+  margin-bottom: 1rem;
  }
  .task-input input::placeholder{
   color: #11111d;
@@ -2940,8 +2955,15 @@ justify-content: space-between;
    line-height: 1.2;
    letter-spacing: -0.4px;
    color: black;
-   margin-top: .5rem;
+  font-style: italic;
+  font-weight: 400;
  
+ }
+ .project-nav {
+  width: 100%;
+  display: flex;
+  gap: 15rem;
+  margin-left: 4rem;
  }
  .small-text {
   font-weight: 500;
@@ -3458,6 +3480,9 @@ header {
  .darkmode .list-subtitle {
   color: white;
  }
+ .darkmode .list-subtitle--projects {
+  color: black;
+ }
  .darkmode  #nav .landing-page.button:hover {
   background-color: transparent;
   color: white;
@@ -3788,9 +3813,7 @@ border: 1px white solid;
  .darkmode .task-name{
    color: white;
  }
- .darkmode .task-input {
-  border: 1px whitesmoke solid;
- }
+
  .darkmode  .task-input input::placeholder {
   color: white;
  }
@@ -4466,6 +4489,12 @@ border: 1px white solid;
   .notes-container .note-item{
     width: 100%;
   }
+.list-subtitle {
+  display: none;
+}
+.start-date {
+  display: none;
+}
   #nav {
    width: 100%;
    padding: 2rem 1.5rem;
