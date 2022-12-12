@@ -25,8 +25,6 @@ status: :wrench: _IN DEVELOPMENT_ (draft stage, _design and styling of elements 
 
 - the bugtracker for TEAMS
 
-## Test
-This is the <a href="https://workspace-bugtracker.herokuapp.com">demo website</a> of the project. Username: `workspace` Password: `workspace`. <br />
 
 ## Idea
 The idea of the project is creating a _workspace_ environment for each task or issue in a project created by a user, that includes: 
